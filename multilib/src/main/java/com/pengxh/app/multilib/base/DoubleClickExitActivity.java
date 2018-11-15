@@ -3,7 +3,7 @@ package com.pengxh.app.multilib.base;
 import android.view.KeyEvent;
 import android.widget.Toast;
 
-public abstract class DoubleClickExitActivity extends NormalActivity {
+public abstract class DoubleClickExitActivity extends BaseNormalActivity {
 
     private long i_time = 0;
     private int TIMESPACE = 2000;
