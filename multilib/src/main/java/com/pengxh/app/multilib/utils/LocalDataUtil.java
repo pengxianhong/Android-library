@@ -1,4 +1,4 @@
-package com.pengxh.app.multilib.others;
+package com.pengxh.app.multilib.utils;
 
 import android.app.Activity;
 import android.content.res.AssetManager;

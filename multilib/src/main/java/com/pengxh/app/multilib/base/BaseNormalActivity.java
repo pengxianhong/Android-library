@@ -5,9 +5,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
-import android.util.Log;
-import android.widget.Toast;
 
 import butterknife.ButterKnife;
 
@@ -34,28 +31,6 @@ public abstract class BaseNormalActivity extends AppCompatActivity {
 
     private void windowFeature() {
         //requestWindowFeature(Window.FEATURE_NO_TITLE);
-    }
-
-    /**
-     * @param msg
-     */
-    protected void showShortToast(String msg) {
-        if (!TextUtils.isEmpty(msg)) {
-            Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
-        } else {
-            Log.e(TAG, "msg must not be empty");
-        }
-    }
-
-    /**
-     * @param msg
-     */
-    protected void showLongToast(String msg) {
-        if (!TextUtils.isEmpty(msg)) {
-            Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
-        } else {
-            Log.e(TAG, "msg must not be empty");
-        }
     }
 
     public void showProgress(Context mContext, String message) {
