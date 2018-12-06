@@ -20,7 +20,7 @@ public class ImgUtil {
             HttpURLConnection conn = (HttpURLConnection) imgurl.openConnection();
             conn.setConnectTimeout(6000);//设置超时
             conn.setDoInput(true);
-            conn.setUseCaches(false);//不缓存
+            conn.setUseCaches(true);
             conn.connect();
             InputStream is = conn.getInputStream();
             bitmap = BitmapFactory.decodeStream(is);

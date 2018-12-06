@@ -5,6 +5,9 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Created by Administrator on 2018/11/16.
  */
@@ -35,5 +38,14 @@ public class TextUtil {
         } else {
             Log.e(TAG, "msg must not be empty");
         }
+    }
+
+    /**
+     * @param str
+     */
+    public static String regExString(String str) {
+        String regEx = "[`~!@#$%^&*()+=|{}':;',\\[\\].<>《》/?~！@#￥%……&*（）——+|{}【】'；：”“’。，、？]";
+        Matcher matcher = Pattern.compile(regEx).matcher(str);
+        return matcher.replaceAll("").trim();
     }
 }

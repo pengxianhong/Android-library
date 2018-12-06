@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 
 import com.pengxh.app.multilib.base.BaseNormalActivity;
+import com.pengxh.app.multilib.utils.DensityUtil;
 import com.pengxh.app.multilib.utils.TextUtil;
 import com.pengxh.app.multilib.widget.swipemenu.SwipeMenu;
 import com.pengxh.app.multilib.widget.swipemenu.SwipeMenuCreator;
@@ -13,7 +14,6 @@ import com.pengxh.app.multilib.widget.swipemenu.SwipeMenuListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.pengxh.app.multilib.utils.DensityUtil.dp2px;
 
 public class MainActivity extends BaseNormalActivity {
 
@@ -42,7 +42,7 @@ public class MainActivity extends BaseNormalActivity {
                         getApplicationContext());
                 openItem.setBackground(new ColorDrawable(Color.rgb(255, 0,
                         0)));
-                openItem.setWidth(dp2px(getApplicationContext(), 80));
+                openItem.setWidth(DensityUtil.dp2px(getApplicationContext(), 80));
                 openItem.setTitle("Delete");
                 openItem.setTitleSize(18);
                 openItem.setTitleColor(Color.WHITE);
