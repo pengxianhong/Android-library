@@ -6,4 +6,12 @@
         <attr name="border_color" format="color" />
     </declare-styleable>
 
+    <declare-styleable name="VerificationCodeView">
+        <attr name="text" format="string" />
+        <attr name="text_length" format="integer" />
+        <attr name="text_size" format="dimension" />
+        <attr name="text_color" format="color" />
+        <attr name="view_background" format="color" />
+    </declare-styleable>
+
 </resources>
