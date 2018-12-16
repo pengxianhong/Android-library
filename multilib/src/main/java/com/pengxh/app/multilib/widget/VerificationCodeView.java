@@ -1,5 +1,6 @@
 package com.pengxh.app.multilib.widget;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -12,6 +13,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.TextView;
 
 import com.pengxh.app.multilib.R;
 
@@ -22,7 +24,8 @@ import java.util.Random;
 /**
  * 验证码控件
  */
-public class VerificationCodeView extends View {
+@SuppressLint("AppCompatCustomView")
+public class VerificationCodeView extends TextView implements View.OnClickListener {
 
     private static final String TAG = "VerificationCodeView";
 
@@ -39,7 +42,7 @@ public class VerificationCodeView extends View {
     /**
      * 验证码默认文字长度
      */
-    private int mDefTextLenth = 4;
+    private int mDefaultLenth = 4;
 
     /**
      * 验证码文字大小
@@ -61,77 +64,35 @@ public class VerificationCodeView extends View {
      */
     private Rect mRect;
     private Paint mPaint;
+    private OnCodeChangedListenser mChangedListenser;
 
     public VerificationCodeView(Context context) {
-        this(context, null);
+        super(context);
     }
 
     public VerificationCodeView(Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs, 0);
-    }
-
-    public VerificationCodeView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
+        super(context, attrs);
         /**
          * 获取到attrs属性
          * */
-        TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.VerificationCodeView, defStyleAttr, 0);
-        int index = typedArray.getIndexCount();//attr属性条目
-        for (int i = 0; i < index; i++) {
-            int arrayIndex = typedArray.getIndex(i);
-            if (arrayIndex == R.styleable.VerificationCodeView_text) {
-                if (TextUtils.isEmpty(typedArray.getString(arrayIndex))) {
-                    Log.e(TAG, "mText is null,please check xml");
-                } else {
-                    mText = typedArray.getString(arrayIndex);
-                }
-            } else if (arrayIndex == R.styleable.VerificationCodeView_text_size) {
-                mTextSize = typedArray.getDimensionPixelSize(arrayIndex, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 16, getResources().getDisplayMetrics()));
-            } else if (arrayIndex == R.styleable.VerificationCodeView_text_color) {
-                mTextColor = typedArray.getColor(arrayIndex, Color.BLACK);
-            } else if (arrayIndex == R.styleable.VerificationCodeView_view_background) {
-                mViewBgColor = typedArray.getColor(arrayIndex, Color.YELLOW);
-            } else if (arrayIndex == R.styleable.VerificationCodeView_text_length) {
-                mTextLenth = typedArray.getInt(arrayIndex, mDefTextLenth);
-            }
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.VerificationCodeView);
+
+        if (TextUtils.isEmpty(typedArray.getString(R.styleable.VerificationCodeView_text))) {
+            Log.e(TAG, "mText is null,please check xml");
+        } else {
+            mText = typedArray.getString(R.styleable.VerificationCodeView_text);
         }
+        mTextSize = typedArray.getDimensionPixelSize(R.styleable.VerificationCodeView_text_size, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 20, getResources().getDisplayMetrics()));
+        mTextColor = typedArray.getColor(R.styleable.VerificationCodeView_text_color, Color.GREEN);
+        mViewBgColor = typedArray.getColor(R.styleable.VerificationCodeView_view_background, Color.LTGRAY);
+        mTextLenth = typedArray.getInt(R.styleable.VerificationCodeView_text_length, mDefaultLenth);
+
         typedArray.recycle();
         /**
          * 初始化画笔
          * */
         initPaint();
-        initEvent();
-    }
-
-    private void initEvent() {
-        this.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /**
-                 * 点击获取随机数
-                 * */
-                mText = randomNumber(mTextLenth);
-                postInvalidate();
-            }
-        });
-    }
-
-    /**
-     * 随机数
-     */
-    private String randomNumber(int length) {
-        Random random = new Random();
-        List<Integer> list = new ArrayList<>();
-        for (int i = 0; i < length; i++) {
-            //可根据需求修改随机数个数
-            int nextInt = random.nextInt(10);
-            list.add(nextInt);
-        }
-        StringBuilder number = new StringBuilder();
-        for (Integer index : list) {
-            number.append("").append(index);
-        }
-        return number.toString();
+        setOnClickListener(this);
     }
 
     private void initPaint() {
@@ -254,5 +215,46 @@ public class VerificationCodeView extends View {
             tempCheckNum[i + 1] = (int) (Math.random() * height);
         }
         return tempCheckNum;
+    }
+
+    @Override
+    public void onClick(View v) {
+        /**
+         * 点击获取随机数
+         * */
+        mText = randomNumber(mTextLenth);
+        if (mChangedListenser == null) {
+            Log.e(TAG, "OnCodeChangedListenser is null");
+            return;
+        } else {
+            mChangedListenser.getCode(mText);
+        }
+        postInvalidate();
+    }
+
+    /**
+     * 随机数
+     */
+    private String randomNumber(int length) {
+        Random random = new Random();
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < length; i++) {
+            //可根据需求修改随机数个数
+            int nextInt = random.nextInt(10);
+            list.add(nextInt);
+        }
+        StringBuilder number = new StringBuilder();
+        for (Integer index : list) {
+            number.append("").append(index);
+        }
+        return number.toString();
+    }
+
+    public interface OnCodeChangedListenser {
+        void getCode(String code);
+    }
+
+    public void setOnCodeChangedListenser(OnCodeChangedListenser listenser) {
+        this.mChangedListenser = listenser;
     }
 }
