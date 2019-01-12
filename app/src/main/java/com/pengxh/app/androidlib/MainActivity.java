@@ -1,13 +1,21 @@
 package com.pengxh.app.androidlib;
 
+import android.app.usage.NetworkStatsManager;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+
 import com.pengxh.app.multilib.base.BaseNormalActivity;
+import com.pengxh.app.multilib.utils.NetworkStatsHelper;
 import com.pengxh.app.multilib.utils.TextUtil;
-import com.pengxh.app.multilib.widget.VerificationCodeView;
 
-
+@RequiresApi(api = Build.VERSION_CODES.M)
 public class MainActivity extends BaseNormalActivity {
 
-    private VerificationCodeView mVerificationCodeView;
+    private static final String TAG = "MainActivity";
+    private Button mButton;
 
     @Override
     public void initView() {
@@ -16,15 +24,26 @@ public class MainActivity extends BaseNormalActivity {
 
     @Override
     public void init() {
-        mVerificationCodeView = (VerificationCodeView) findViewById(R.id.mVerificationCodeView);
+        mButton = (Button) findViewById(R.id.mButton);
     }
 
     @Override
     public void initEvent() {
-        mVerificationCodeView.setOnCodeChangedListenser(new VerificationCodeView.OnCodeChangedListenser() {
+        NetworkStatsHelper.hasPermissionToReadNetworkStatus(this);
+
+        mButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void getCode(String code) {
-                TextUtil.showShortToast(MainActivity.this, code);
+            public void onClick(View v) {
+                NetworkStatsManager statsManager = (NetworkStatsManager) getSystemService(NETWORK_STATS_SERVICE);
+                //获取每天的流量统计
+                if (statsManager == null) {
+                    Log.e(TAG, "statsManager is null, please check it");
+                } else {
+//                    long dayBytesWifi = NetworkStatsHelper.getDayBytesWifi(statsManager);
+                    long dayBytesMobile = NetworkStatsHelper.getDayBytesMobile(MainActivity.this, statsManager);
+                    String Mobiledata = NetworkStatsHelper.transformDataFlow(dayBytesMobile);
+                    TextUtil.showShortToast(MainActivity.this, "Total: " + Mobiledata + "MB");
+                }
             }
         });
     }
