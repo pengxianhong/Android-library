@@ -20,6 +20,7 @@ public class MainActivity extends BaseNormalActivity {
     @Override
     public void initView() {
         setContentView(R.layout.activity_main);
+        TextUtil.init(this);
     }
 
     @Override
@@ -42,7 +43,8 @@ public class MainActivity extends BaseNormalActivity {
 //                    long dayBytesWifi = NetworkStatsHelper.getDayBytesWifi(statsManager);
                     long dayBytesMobile = NetworkStatsHelper.getDayBytesMobile(MainActivity.this, statsManager);
                     String Mobiledata = NetworkStatsHelper.transformDataFlow(dayBytesMobile);
-                    TextUtil.showShortToast(MainActivity.this, "Total: " + Mobiledata + "MB");
+
+                    TextUtil.showBeautifulToast("Total: " + Mobiledata + "MB", 3);
                 }
             }
         });
