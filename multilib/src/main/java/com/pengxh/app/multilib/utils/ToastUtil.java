@@ -48,22 +48,22 @@ public class ToastUtil {
             } else {
                 switch (level) {
                     case 0:
-                        TastyToast.makeText(mContext, msg, 0, TastyToast.DEFAULT).show();
+                        TastyToast.makeText(mContext, msg, 0, TastyToast.DEFAULT);
                         break;
                     case 1:
-                        TastyToast.makeText(mContext, msg, 0, TastyToast.INFO).show();
+                        TastyToast.makeText(mContext, msg, 0, TastyToast.INFO);
                         break;
                     case 2:
-                        TastyToast.makeText(mContext, msg, 0, TastyToast.WARNING).show();
+                        TastyToast.makeText(mContext, msg, 0, TastyToast.WARNING);
                         break;
                     case 3:
-                        TastyToast.makeText(mContext, msg, 0, TastyToast.SUCCESS).show();
+                        TastyToast.makeText(mContext, msg, 0, TastyToast.SUCCESS);
                         break;
                     case 4:
-                        TastyToast.makeText(mContext, msg, 0, TastyToast.CONFUSING).show();
+                        TastyToast.makeText(mContext, msg, 0, TastyToast.CONFUSING);
                         break;
                     case 5:
-                        TastyToast.makeText(mContext, msg, 0, TastyToast.ERROR).show();
+                        TastyToast.makeText(mContext, msg, 0, TastyToast.ERROR);
                         break;
                     default:
                         break;

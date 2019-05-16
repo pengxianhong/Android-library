@@ -15,7 +15,7 @@ public class MainActivity extends BaseNormalActivity {
     @Override
     public void initView() {
         setContentView(R.layout.activity_main);
-        CrashHandler.init(this);
+        ToastUtil.init(this);
     }
 
     @Override
