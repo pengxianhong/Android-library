@@ -4,7 +4,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.pengxh.app.multilib.base.BaseNormalActivity;
-import com.pengxh.app.multilib.utils.CrashHandler;
 import com.pengxh.app.multilib.utils.ToastUtil;
 
 public class MainActivity extends BaseNormalActivity {
