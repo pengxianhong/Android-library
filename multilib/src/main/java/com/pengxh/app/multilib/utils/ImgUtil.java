@@ -128,6 +128,8 @@ public class ImgUtil {
 
     /**
      * 图片背景切换动画帮助类
+     * <p>
+     * Created by jameson on 9/3/16.
      */
 
     public static void startSwitchBackgroundAnim(ImageView view, Bitmap bitmap) {

@@ -14,7 +14,7 @@ public class DensityUtil {
     /**
      * 解决ScrollView嵌套另一个可滑动的View时，高度异常的问题
      */
-    public static void measureViewHeight(Context context, GridView gridView) {
+    public static void measureViewHeight(Context mContext, GridView gridView) {
         ListAdapter adapter = gridView.getAdapter();
         ViewGroup.LayoutParams params = gridView.getLayoutParams();
         if (adapter == null) {
@@ -24,7 +24,7 @@ public class DensityUtil {
         View view;
         for (int i = 0; i < adapter.getCount(); i++) {
             view = adapter.getView(i, null, gridView);
-            int i1 = View.MeasureSpec.makeMeasureSpec(getScreenWidth(context), View.MeasureSpec.EXACTLY);
+            int i1 = View.MeasureSpec.makeMeasureSpec(getScreenWidth(mContext), View.MeasureSpec.EXACTLY);
             int i2 = View.MeasureSpec.makeMeasureSpec(i1, View.MeasureSpec.UNSPECIFIED);
             view.measure(i1, i2);
             totalHeight += view.getMeasuredHeight();
@@ -123,8 +123,8 @@ public class DensityUtil {
         return statusHeight;
 
         //依赖于WMS(窗口管理服务的回调)【不建议使用】
-        /*Rect outRect = new Rect();
-        ((Activity)context).getWindow().getDecorView().getWindowVisibleDisplayFrame(outRect);
+		/*Rect outRect = new Rect();
+		((Activity)context).getWindow().getDecorView().getWindowVisibleDisplayFrame(outRect);
 		return outRect.top;*/
     }
 
