@@ -2,10 +2,36 @@ package com.pengxh.app.multilib.utils;
 
 import android.content.Context;
 import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.GridView;
+import android.widget.ListAdapter;
 
 public class DensityUtil {
 
     public static float RATIO = 0.95F;//缩放比例值
+
+    /**
+     * 解决ScrollView嵌套另一个可滑动的View时，高度异常的问题
+     */
+    public static void measureViewHeight(Context mContext, GridView gridView) {
+        ListAdapter adapter = gridView.getAdapter();
+        ViewGroup.LayoutParams params = gridView.getLayoutParams();
+        if (adapter == null) {
+            return;
+        }
+        int totalHeight = 0;
+        View view;
+        for (int i = 0; i < adapter.getCount(); i++) {
+            view = adapter.getView(i, null, gridView);
+            int i1 = View.MeasureSpec.makeMeasureSpec(getScreenWidth(mContext), View.MeasureSpec.EXACTLY);
+            int i2 = View.MeasureSpec.makeMeasureSpec(i1, View.MeasureSpec.UNSPECIFIED);
+            view.measure(i1, i2);
+            totalHeight += view.getMeasuredHeight();
+        }
+        params.height = totalHeight + (gridView.getLayoutDirection() * (adapter.getCount() - 1));
+        gridView.setLayoutParams(params);
+    }
 
     /**
      * px 转 dp【按照一定的比例】
