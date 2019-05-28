@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
+import android.widget.AbsListView;
 import android.widget.ListAdapter;
 
 public class DensityUtil {
@@ -14,23 +14,23 @@ public class DensityUtil {
     /**
      * 解决ScrollView嵌套另一个可滑动的View时，高度异常的问题
      */
-    public static void measureViewHeight(Context mContext, GridView gridView) {
-        ListAdapter adapter = gridView.getAdapter();
-        ViewGroup.LayoutParams params = gridView.getLayoutParams();
+    public static <T extends AbsListView> void measureViewHeight(Context mContext, T view) {
+        ListAdapter adapter = view.getAdapter();
+        ViewGroup.LayoutParams params = view.getLayoutParams();
         if (adapter == null) {
             return;
         }
         int totalHeight = 0;
-        View view;
+        View v;
         for (int i = 0; i < adapter.getCount(); i++) {
-            view = adapter.getView(i, null, gridView);
+            v = adapter.getView(i, null, view);
             int i1 = View.MeasureSpec.makeMeasureSpec(getScreenWidth(mContext), View.MeasureSpec.EXACTLY);
             int i2 = View.MeasureSpec.makeMeasureSpec(i1, View.MeasureSpec.UNSPECIFIED);
-            view.measure(i1, i2);
-            totalHeight += view.getMeasuredHeight();
+            v.measure(i1, i2);
+            totalHeight += v.getMeasuredHeight();
         }
-        params.height = totalHeight + (gridView.getLayoutDirection() * (adapter.getCount() - 1));
-        gridView.setLayoutParams(params);
+        params.height = totalHeight + (view.getLayoutDirection() * (adapter.getCount() - 1));
+        view.setLayoutParams(params);
     }
 
     /**
