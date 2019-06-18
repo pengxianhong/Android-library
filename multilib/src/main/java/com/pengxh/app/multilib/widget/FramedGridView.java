@@ -65,7 +65,7 @@ public class FramedGridView extends GridView {
     }
 
     @Override
-    protected void dispatchDraw(Canvas canvas) {
+    protected void onDraw(Canvas canvas) {
         super.dispatchDraw(canvas);
         View child = getChildAt(0);
         //计算九宫格每行有几个item，俗称“列”
