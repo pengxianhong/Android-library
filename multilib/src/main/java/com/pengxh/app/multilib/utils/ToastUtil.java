@@ -10,6 +10,13 @@ import com.sdsmdg.tastytoast.TastyToast;
 
 public class ToastUtil {
     private static final String TAG = "ToastUtil";
+    public static final int DEFAULT = 0;
+    public static final int INFO = 1;
+    public static final int WARNING = 2;
+    public static final int SUCCESS = 3;
+    public static final int CONFUSING = 4;
+    public static final int ERROR = 5;
+
     @SuppressLint("StaticFieldLeak")
     private static Context mContext;
 
