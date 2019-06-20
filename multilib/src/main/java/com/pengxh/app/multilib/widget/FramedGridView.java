@@ -66,11 +66,12 @@ public class FramedGridView extends GridView {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        super.dispatchDraw(canvas);
-        View child = getChildAt(0);
+        super.onDraw(canvas);
+        int column = 3;
         //计算九宫格每行有几个item，俗称“列”
-        int column = getWidth() / child.getWidth();
+        int width = getWidth();
         int childCount = getChildCount();//获取整个九宫格所有子布局item的个数
+        Log.d(TAG, "屏幕宽度：" + width + "\r\n九宫格数目：" + childCount);
 
         //轮流画每个item的边框
         for (int i = 0; i < childCount; i++) {
