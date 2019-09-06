@@ -16,7 +16,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
 
     private static CrashHandler INSTANCE = new CrashHandler();
     private static Context mContext;
-    public static String CRASH_PATH;
+    private static String CRASH_PATH;
 
     private Thread.UncaughtExceptionHandler mDefaultHandler;
 
@@ -53,7 +53,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
             path.mkdirs();
         }
 
-        File file = new File(CRASH_PATH + File.separator + "log_" + convertYYMMDDHHmm(System.currentTimeMillis()) + ".txt");
+        File file = new File(CRASH_PATH + File.separator + "log_" + formatTime(System.currentTimeMillis()) + ".txt");
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(file);
@@ -79,7 +79,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         }
     }
 
-    private static String convertYYMMDDHHmm(long time) {
+    private static String formatTime(long time) {
         Date date = new Date(time);
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-hh-mm-ss");
         return dateFormat.format(date);

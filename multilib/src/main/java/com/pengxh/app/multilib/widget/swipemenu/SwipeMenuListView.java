@@ -21,7 +21,7 @@ public class SwipeMenuListView extends ListView {
 
     public static final int DIRECTION_LEFT = 1;
     public static final int DIRECTION_RIGHT = -1;
-    private int mDirection = 1;//swipe from right to left by default
+    private int mDirection = 1;//swipe from right to left by defaultt
 
     private int MAX_Y = 5;
     private int MAX_X = 3;

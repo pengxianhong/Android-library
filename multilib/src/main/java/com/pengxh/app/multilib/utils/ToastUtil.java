@@ -4,77 +4,87 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.sdsmdg.tastytoast.TastyToast;
+import com.pengxh.app.multilib.R;
 
 public class ToastUtil {
     private static final String TAG = "ToastUtil";
     public static final int DEFAULT = 0;
-    public static final int INFO = 1;
-    public static final int WARNING = 2;
-    public static final int SUCCESS = 3;
-    public static final int CONFUSING = 4;
-    public static final int ERROR = 5;
+    public static final int SUCCESS = 1;
+    public static final int ERROR = 2;
+    public static final int WARING = 3;
 
     @SuppressLint("StaticFieldLeak")
     private static Context mContext;
 
-    public static void init(Context mContext) {
-        ToastUtil.mContext = mContext.getApplicationContext();//获取全局上下文，最长生命周期
+    public static void init(Context context) {
+        ToastUtil.mContext = context.getApplicationContext();//获取全局上下文，最长生命周期
     }
 
     /**
-     * 简单封装原生Toast
+     * 简单自定义Toast
      *
-     * @param msg     消息体
-     * @param isShort 是否短时间显示
+     * @param msg 消息体
      */
-    public static void showToast(String msg, boolean isShort) {
+    public static void showToast(String msg, int toastStyle) {
         if (!TextUtils.isEmpty(msg)) {
-            if (isShort) {
-                Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(mContext, msg, Toast.LENGTH_LONG).show();
-            }
-        } else {
-            Log.e(TAG, "msg must not be empty");
-        }
-    }
+            switch (toastStyle) {
+                case DEFAULT:
+                    View defautView = LayoutInflater.from(mContext).inflate(R.layout.toast_default_style, null);
+                    TextView defautTextView = defautView.findViewById(R.id.mToastMessage);
+                    defautTextView.setTextSize(18.0f);
+                    defautTextView.setCompoundDrawablePadding(20);
+                    defautTextView.setPadding(50, 10, 50, 10);
+                    defautTextView.setText(msg);
 
-    /**
-     * 简单封装Toast三方框架，高效果更炫，使用更简单
-     *
-     * @param msg
-     * @param level [0,5]
-     */
-    public static void showBeautifulToast(String msg, int level) {
-        if (!TextUtils.isEmpty(msg)) {
-            if (level > 5 || level < 0) {
-                Log.e(TAG, "Toast's level field is [0,5]");
-            } else {
-                switch (level) {
-                    case 0:
-                        TastyToast.makeText(mContext, msg, 0, TastyToast.DEFAULT);
-                        break;
-                    case 1:
-                        TastyToast.makeText(mContext, msg, 0, TastyToast.INFO);
-                        break;
-                    case 2:
-                        TastyToast.makeText(mContext, msg, 0, TastyToast.WARNING);
-                        break;
-                    case 3:
-                        TastyToast.makeText(mContext, msg, 0, TastyToast.SUCCESS);
-                        break;
-                    case 4:
-                        TastyToast.makeText(mContext, msg, 0, TastyToast.CONFUSING);
-                        break;
-                    case 5:
-                        TastyToast.makeText(mContext, msg, 0, TastyToast.ERROR);
-                        break;
-                    default:
-                        break;
-                }
+                    Toast defautToast = new Toast(mContext);
+                    defautToast.setDuration(Toast.LENGTH_LONG);
+                    defautToast.setView(defautTextView);
+                    defautToast.show();
+                    break;
+                case SUCCESS:
+                    View successView = LayoutInflater.from(mContext).inflate(R.layout.toast_success_style, null);
+                    TextView successTextView = successView.findViewById(R.id.mToastMessage);
+                    successTextView.setTextSize(18.0f);
+                    successTextView.setCompoundDrawablePadding(20);
+                    successTextView.setPadding(50, 10, 50, 10);
+                    successTextView.setText(msg);
+
+                    Toast successToast = new Toast(mContext);
+                    successToast.setDuration(Toast.LENGTH_LONG);
+                    successToast.setView(successTextView);
+                    successToast.show();
+                    break;
+                case ERROR:
+                    View errorView = LayoutInflater.from(mContext).inflate(R.layout.toast_error_style, null);
+                    TextView errorTextView = errorView.findViewById(R.id.mToastMessage);
+                    errorTextView.setTextSize(18.0f);
+                    errorTextView.setCompoundDrawablePadding(20);
+                    errorTextView.setPadding(50, 10, 50, 10);
+                    errorTextView.setText(msg);
+
+                    Toast errorToast = new Toast(mContext);
+                    errorToast.setDuration(Toast.LENGTH_LONG);
+                    errorToast.setView(errorTextView);
+                    errorToast.show();
+                    break;
+                case WARING:
+                    View warningView = LayoutInflater.from(mContext).inflate(R.layout.toast_waring_style, null);
+                    TextView warningTextView = warningView.findViewById(R.id.mToastMessage);
+                    warningTextView.setTextSize(18.0f);
+                    warningTextView.setCompoundDrawablePadding(20);
+                    warningTextView.setPadding(50, 10, 50, 10);
+                    warningTextView.setText(msg);
+
+                    Toast warningToast = new Toast(mContext);
+                    warningToast.setDuration(Toast.LENGTH_LONG);
+                    warningToast.setView(warningTextView);
+                    warningToast.show();
+                    break;
             }
         } else {
             Log.e(TAG, "msg must not be empty");

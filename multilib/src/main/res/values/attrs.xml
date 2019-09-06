@@ -22,4 +22,36 @@
         <attr name="gridview_border_color" format="color" />
     </declare-styleable>
 
+    <declare-styleable name="DialProgress">
+        <attr name="antiAlias" />
+        <attr name="startAngle" />
+        <attr name="sweepAngle" />
+        <attr name="animTime" />
+        <attr name="maxValue" />
+        <attr name="value" />
+        <attr name="precision" />
+        <attr name="valueSize" />
+        <attr name="valueColor" />
+        <attr name="textOffsetPercentInRadius" />
+        <!-- 绘制内容的单位 -->
+        <attr name="unit" />
+        <attr name="unitSize" />
+        <attr name="unitColor" />
+        <!-- 绘制内容相应的提示语 -->
+        <attr name="hint" />
+        <attr name="hintSize" />
+        <attr name="hintColor" />
+        <!-- 圆弧的宽度 -->
+        <attr name="arcWidth" />
+        <!-- 刻度的宽度 -->
+        <attr name="dialWidth" format="dimension|reference" />
+        <!-- 刻度之间的间隔 -->
+        <attr name="dialIntervalDegree" format="integer" />
+        <!-- 圆弧颜色 -->
+        <attr name="arcColors" />
+        <!-- 背景圆弧线颜色 -->
+        <attr name="bgArcColor" />
+        <!-- 刻度线颜色 -->
+        <attr name="dialColor" format="color|reference" />
+    </declare-styleable>
 </resources>
