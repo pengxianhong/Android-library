@@ -23,7 +23,7 @@ import com.pengxh.app.multilib.R;
 
 public class DialProgress extends View {
 
-    private static final String TAG = DialProgress.class.getSimpleName();
+    private static final String TAG = "DialProgress";
     private Context mContext;
 
     //圆心坐标

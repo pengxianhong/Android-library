@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
  * Created by Administrator on 2018/11/16.
  */
 
-public class TextUtil {
+public class StringUtil {
     /**
      * 匹配中文符号
      *
