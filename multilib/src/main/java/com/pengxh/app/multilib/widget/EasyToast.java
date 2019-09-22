@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.pengxh.app.multilib.R;
 
 public class EasyToast {
-    private static final String TAG = "ToastUtil";
+    private static final String TAG = "EasyToast";
     public static final int DEFAULT = 0;
     public static final int SUCCESS = 1;
     public static final int ERROR = 2;
