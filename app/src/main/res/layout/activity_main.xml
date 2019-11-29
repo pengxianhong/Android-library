@@ -4,7 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000"
+    android:padding="30dp"
     tools:context=".MainActivity">
+
+    <com.pengxh.app.multilib.widget.EditTextWithDelete
+        android:id="@+id/mEditTextWithDelete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_edittext"
+        android:padding="5dp" />
 
     <Button
         android:id="@+id/mButtonShow"

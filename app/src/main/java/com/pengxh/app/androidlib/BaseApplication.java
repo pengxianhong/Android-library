@@ -2,6 +2,7 @@ package com.pengxh.app.androidlib;
 
 import android.app.Application;
 
+import com.pengxh.app.multilib.utils.SaveKeyValues;
 import com.pengxh.app.multilib.widget.EasyToast;
 
 public class BaseApplication extends Application {
@@ -9,5 +10,6 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         EasyToast.init(this);
+        SaveKeyValues.initSharedPreferences(this);
     }
 }

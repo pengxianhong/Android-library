@@ -5,7 +5,6 @@
     android:layout_height="wrap_content"
     android:layout_centerInParent="true"
     android:background="@drawable/toast_dafault"
-    android:drawableStart="@drawable/defaultt"
     android:gravity="center"
     android:text="TextView"
     android:textColor="#FFFFFF" />

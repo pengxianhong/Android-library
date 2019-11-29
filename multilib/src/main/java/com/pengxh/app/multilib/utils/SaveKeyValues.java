@@ -3,21 +3,32 @@ package com.pengxh.app.multilib.utils;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 public class SaveKeyValues {
-    private static SharedPreferences sharedPreferences;
-    private static SharedPreferences.Editor editor;
+
+    private static final String TAG = "SaveKeyValues";
+
     @SuppressLint({"StaticFieldLeak"})
     private static Context context;
+    private static SharedPreferences sharedPreferences;
+    private static SharedPreferences.Editor editor;
+    private static String file;
 
     public static void initSharedPreferences(Context mContext) {
         context = mContext.getApplicationContext();
+        String packageName = context.getPackageName();
+        //获取到的包名带有“.”方便命名，取最后一个作为sp文件名，例如:com.pengxh.app.androidlib
+        String[] split = packageName.split("\\.");//先转义.之后才能分割
+        int length = split.length;
+        file = split[length - 1];
+        Log.d(TAG, file);
     }
 
     /**
      * 存储
      */
-    public static void putValue(String file, String key, Object object) {
+    public static void putValue(String key, Object object) {
         sharedPreferences = context.getSharedPreferences(file, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         if (object instanceof String) {
@@ -39,7 +50,7 @@ public class SaveKeyValues {
     /**
      * 获取保存的数据
      */
-    public static Object getValue(String file, String key, Object defaultObject) {
+    public static Object getValue(String key, Object defaultObject) {
         sharedPreferences = context.getSharedPreferences(file, Context.MODE_PRIVATE);
         if (defaultObject instanceof String) {
             return sharedPreferences.getString(key, (String) defaultObject);
@@ -75,7 +86,7 @@ public class SaveKeyValues {
     /**
      * 查询某个key是否存在
      */
-    public static Boolean containsKey(String file, String key) {
+    public static Boolean containsKey(String key) {
         sharedPreferences = context.getSharedPreferences(file, Context.MODE_PRIVATE);
         return sharedPreferences.contains(key);
     }
