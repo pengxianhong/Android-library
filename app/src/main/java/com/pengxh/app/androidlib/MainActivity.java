@@ -1,20 +1,19 @@
 package com.pengxh.app.androidlib;
 
+import android.content.Intent;
 import android.view.View;
 
 import com.pengxh.app.multilib.base.BaseNormalActivity;
-import com.pengxh.app.multilib.utils.SaveKeyValues;
-import com.pengxh.app.multilib.widget.EasyToast;
-import com.pengxh.app.multilib.widget.EditTextWithDelete;
+import com.pengxh.app.multilib.utils.BroadcastManager;
 
-import butterknife.BindView;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import butterknife.OnClick;
 
 public class MainActivity extends BaseNormalActivity implements View.OnClickListener {
 
     private static final String TAG = "MainActivity";
-    @BindView(R.id.mEditTextWithDelete)
-    EditTextWithDelete mEditTextWithDelete;
 
     @Override
     public void initView() {
@@ -23,19 +22,23 @@ public class MainActivity extends BaseNormalActivity implements View.OnClickList
 
     @Override
     public void initData() {
-        SaveKeyValues.putValue("tag", "MainActivity");
+
     }
 
     @Override
     public void initEvent() {
-
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                BroadcastManager.getInstance(MainActivity.this).sendBroadcast("action.receiverData", "receiverData");
+            }
+        }, 0, 3000);
     }
 
     @OnClick({R.id.mButtonShow})
     @Override
     public void onClick(View view) {
-        mEditTextWithDelete.setText(SaveKeyValues.getValue("tag", "").toString());
-        String trim = mEditTextWithDelete.getText().toString().trim();
-        EasyToast.showToast(trim, EasyToast.SUCCESS);
+        startActivity(new Intent(this, TestActivity.class));
     }
 }
