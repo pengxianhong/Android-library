@@ -54,4 +54,10 @@
         <!-- 刻度线颜色 -->
         <attr name="dialColor" format="color|reference" />
     </declare-styleable>
+
+    <!--自定义CheckBox属性-->
+    <declare-styleable name="SmoothCheckBox">
+        <attr name="background_color" format="color" />
+        <attr name="stroke_color" format="color" />
+    </declare-styleable>
 </resources>

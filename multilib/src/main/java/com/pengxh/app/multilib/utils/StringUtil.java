@@ -1,7 +1,11 @@
 package com.pengxh.app.multilib.utils;
 
+import android.content.Context;
 import android.util.Log;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -58,5 +62,29 @@ public class StringUtil {
             }
             return isMatch;
         }
+    }
+
+    /**
+     * 读取本地Assets文件内容
+     */
+    public static String getAssetsData(Context context, String fileName) {
+        try {
+            InputStreamReader inputStreamReader = new InputStreamReader(context.getAssets().open(fileName));
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            StringBuffer data = new StringBuffer();
+            String s;
+            try {
+                while ((s = bufferedReader.readLine()) != null) {
+                    data.append(s);
+                }
+                Log.d(TAG, "getAssetsData: " + data);
+                return data.toString();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
