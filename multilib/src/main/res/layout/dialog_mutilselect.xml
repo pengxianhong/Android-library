@@ -17,7 +17,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/mDialogTitle"
+            android:id="@+id/multiDialogTitle"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -37,9 +37,13 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="7"
+            android:cacheColorHint="#00000000"
             android:divider="#CCC"
             android:dividerHeight="1px"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:gravity="center"
+            android:listSelector="#00000000"
             android:scrollbars="none" />
 
         <View
@@ -55,7 +59,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/mDialogCancel"
+                android:id="@+id/multiDialogCancel"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -72,7 +76,7 @@
                 android:background="#CCC" />
 
             <Button
-                android:id="@+id/mDialogConfirm"
+                android:id="@+id/multiDialogConfirm"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

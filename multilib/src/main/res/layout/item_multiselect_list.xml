@@ -3,11 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:descendantFocusability="blocksDescendants"
     android:padding="5dp">
 
     <ImageView
-        android:id="@+id/mLeftImage"
+        android:id="@+id/mStartImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,7 +20,7 @@
         android:layout_marginStart="5dp"
         android:text="北京1"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@id/mLeftImage"
+        app:layout_constraintStart_toEndOf="@id/mStartImage"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -31,11 +30,11 @@
         android:layout_marginStart="5dp"
         android:text="112019060094"
         android:textColor="#0094FF"
-        app:layout_constraintStart_toEndOf="@id/mLeftImage"
+        app:layout_constraintStart_toEndOf="@id/mStartImage"
         app:layout_constraintTop_toBottomOf="@id/mTextViewTips" />
 
     <com.pengxh.app.multilib.widget.SmoothCheckBox
-        android:id="@+id/mCheckBox"
+        android:id="@+id/mSmoothCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

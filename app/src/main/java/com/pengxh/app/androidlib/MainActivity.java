@@ -44,7 +44,7 @@ public class MainActivity extends BaseNormalActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         String data = StringUtil.getAssetsData(this, "testData.json");
-        Log.d(TAG, "onClick: "+data);
+        Log.d(TAG, "onClick: " + data);
         Type type = new TypeToken<List<MultiSelectBean>>() {
         }.getType();
         List<MultiSelectBean> mItemList = new Gson().fromJson(data, type);
@@ -62,7 +62,7 @@ public class MainActivity extends BaseNormalActivity implements View.OnClickList
 
         @Override
         public void onConfirmClick(Dialog dialog, List<String> list) {
-            if (list.size() == 0) {
+            if (list == null) {
                 EasyToast.showToast("什么都还没选中，无法添加！", EasyToast.ERROR);
             } else {
                 EasyToast.showToast("当前选中: " + list, EasyToast.SUCCESS);
