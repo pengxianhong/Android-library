@@ -10,7 +10,6 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Xfermode;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.AppCompatCheckBox;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Checkable;
@@ -24,7 +23,7 @@ import com.pengxh.app.multilib.utils.DensityUtil;
  * @email: 290677893@qq.com
  * @date: 2019/12/14 19:01
  */
-public class SmoothCheckBox extends AppCompatCheckBox implements Checkable, View.OnClickListener {
+public class SmoothCheckBox extends View implements Checkable, View.OnClickListener {
 
     private final static float BOUNCE_VALUE = 0.2f;
 
