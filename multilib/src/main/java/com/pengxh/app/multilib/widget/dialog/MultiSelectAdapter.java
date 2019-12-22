@@ -1,7 +1,8 @@
-package com.pengxh.app.multilib.widget;
+package com.pengxh.app.multilib.widget.dialog;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.support.constraint.ConstraintLayout;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.pengxh.app.multilib.R;
+import com.pengxh.app.multilib.widget.SmoothCheckBox;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,6 +27,7 @@ import java.util.List;
  * @date: 2019/12/15 15:39
  */
 public class MultiSelectAdapter extends BaseAdapter {
+
     private Context context;
     private List<MultiSelectBean> beanList;
     private LayoutInflater inflater;
@@ -61,6 +64,7 @@ public class MultiSelectAdapter extends BaseAdapter {
         if (viewMap.get(position) == null) {
             view = inflater.inflate(R.layout.item_multiselect_list, null);
             itemHolder = new EquipmentListViewHolder();
+            itemHolder.mDialogListItem = view.findViewById(R.id.mDialogListItem);
             itemHolder.mStartImage = view.findViewById(R.id.mStartImage);
             itemHolder.mTextViewTips = view.findViewById(R.id.mTextViewTips);
             itemHolder.mTextViewDes = view.findViewById(R.id.mTextViewDes);
@@ -77,6 +81,7 @@ public class MultiSelectAdapter extends BaseAdapter {
 
     class EquipmentListViewHolder {
 
+        ConstraintLayout mDialogListItem;
         ImageView mStartImage;
         TextView mTextViewTips;
         TextView mTextViewDes;
@@ -92,6 +97,20 @@ public class MultiSelectAdapter extends BaseAdapter {
             } else {
                 Glide.with(context).load(picture).into(mStartImage);
             }
+            mDialogListItem.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    boolean checked = mCheckBox.isChecked();
+                    if (checked) {
+                        mCheckBox.setChecked(false);
+                        hashSet.remove(description);
+                    } else {
+                        mCheckBox.setChecked(true);
+                        hashSet.add(description);
+                    }
+                    checkedListener.getDataList(new ArrayList<>(hashSet));
+                }
+            });
             mCheckBox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

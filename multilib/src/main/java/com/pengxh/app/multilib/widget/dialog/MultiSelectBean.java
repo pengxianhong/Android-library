@@ -1,4 +1,4 @@
-package com.pengxh.app.multilib.widget;
+package com.pengxh.app.multilib.widget.dialog;
 
 /**
  * @description: 多选列表对话框实体类

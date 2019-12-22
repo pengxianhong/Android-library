@@ -1,4 +1,4 @@
-package com.pengxh.app.multilib.widget;
+package com.pengxh.app.multilib.widget.dialog;
 
 import android.app.Dialog;
 import android.content.Context;

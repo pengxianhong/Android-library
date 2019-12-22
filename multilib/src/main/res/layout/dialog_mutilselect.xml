@@ -65,7 +65,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/bg_button"
                 android:gravity="center"
-                android:text="取消"
+                android:text="@string/cancel"
                 android:textColor="#FF0000"
                 android:textSize="18sp" />
 
@@ -82,7 +82,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/bg_button"
                 android:gravity="center"
-                android:text="确定"
+                android:text="@string/confirm"
                 android:textColor="#0094FF"
                 android:textSize="18sp"
                 android:textStyle="bold" />

@@ -1,7 +1,6 @@
 package com.pengxh.app.androidlib;
 
 import android.app.Dialog;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -10,8 +9,8 @@ import com.google.gson.reflect.TypeToken;
 import com.pengxh.app.multilib.base.BaseNormalActivity;
 import com.pengxh.app.multilib.utils.StringUtil;
 import com.pengxh.app.multilib.widget.EasyToast;
-import com.pengxh.app.multilib.widget.MultiSelectBean;
-import com.pengxh.app.multilib.widget.MultiSelectDialog;
+import com.pengxh.app.multilib.widget.dialog.MultiSelectBean;
+import com.pengxh.app.multilib.widget.dialog.MultiSelectDialog;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -44,7 +43,6 @@ public class MainActivity extends BaseNormalActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         String data = StringUtil.getAssetsData(this, "testData.json");
-        Log.d(TAG, "onClick: " + data);
         Type type = new TypeToken<List<MultiSelectBean>>() {
         }.getType();
         List<MultiSelectBean> mItemList = new Gson().fromJson(data, type);
@@ -62,7 +60,7 @@ public class MainActivity extends BaseNormalActivity implements View.OnClickList
 
         @Override
         public void onConfirmClick(Dialog dialog, List<String> list) {
-            if (list == null) {
+            if (list == null || list.size() == 0) {
                 EasyToast.showToast("什么都还没选中，无法添加！", EasyToast.ERROR);
             } else {
                 EasyToast.showToast("当前选中: " + list, EasyToast.SUCCESS);
