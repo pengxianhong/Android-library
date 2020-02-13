@@ -48,7 +48,7 @@ public class StringUtil {
     /**
      * 匹配电话号码
      */
-    static boolean isPhoneNumber(String phoneNumber) {
+    public static boolean isPhoneNumber(String phoneNumber) {
         if (phoneNumber.length() != 11) {
             Log.e(TAG, "手机号应为11位数：" + phoneNumber);
             return false;
@@ -65,7 +65,7 @@ public class StringUtil {
     }
 
     /**
-     * 读取本地Assets文件内容
+     * 获取本地Asserts文件内容
      */
     public static String getAssetsData(Context context, String fileName) {
         try {

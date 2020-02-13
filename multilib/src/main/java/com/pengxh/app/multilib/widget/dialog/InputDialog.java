@@ -42,7 +42,7 @@ public class InputDialog extends Dialog implements View.OnClickListener {
     private void initView() {
         TextView mDialogTitle = findViewById(R.id.mDialogTitle);
         mInputMessage = findViewById(R.id.mInputMessage);
-        TextView mDialogCancel = findViewById(R.id.mmDialogCancel);
+        TextView mDialogCancel = findViewById(R.id.mDialogCancel);
         mDialogCancel.setOnClickListener(this);
         TextView mDialogConfirm = findViewById(R.id.mDialogConfirm);
         mDialogConfirm.setOnClickListener(this);
@@ -61,7 +61,7 @@ public class InputDialog extends Dialog implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         int i = view.getId();
-        if (i == R.id.mmDialogCancel) {
+        if (i == R.id.mDialogCancel) {
             if (listener != null) {
                 listener.onCancelClick(this);
             }
