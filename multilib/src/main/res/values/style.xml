@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <!-- ==================带有输入框的对话框（InputDialog）================== -->
     <style name="InputDialog">
         <!-- alertDialog窗口背景色 -->
         <item name="android:windowBackground">@android:color/transparent</item>
@@ -22,6 +22,7 @@
         <item name="android:windowSoftInputMode">stateAlwaysVisible</item>
     </style>
 
+    <!-- ==================仿iOS样式多选对话框（MultiSelectDialog）================== -->
     <style name="MultiSelectDialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowTitleStyle">@null</item>
         <item name="android:windowBackground">@android:color/transparent</item>
@@ -33,5 +34,21 @@
     <style name="MultiSelectDialog.AnimationStyle" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/slide_in_from_bottom</item>
         <item name="android:windowExitAnimation">@anim/slide_out_to_bottom</item>
+    </style>
+
+    <!-- ==================自定义权限申请对话框（PermissionDialog）================== -->
+    <style name="PermissionDialog">
+        <!-- Dialog的windowFrame框为无 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 是否显示title -->
+        <item name="android:windowNoTitle">false</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 半透明 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 设置dialog的背景：#00000000透明色 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 背景变灰：整个屏幕变灰，配合setCanceledOnTouchOutside(false) -->
+        <item name="android:backgroundDimEnabled">true</item>
     </style>
 </resources>
