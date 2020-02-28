@@ -5,10 +5,6 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author baoyz
- * @date 2014-8-23
- */
 public class SwipeMenu {
 
     private Context mContext;

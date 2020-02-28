@@ -25,14 +25,9 @@ package com.pengxh.app.multilib.widget.swipemenu;
 
 import android.widget.BaseAdapter;
 
-/**
- * Created by Abner on 15/11/20.
- * Email nimengbo@gmail.com
- * github https://github.com/nimengbo
- */
-public abstract class BaseSwipListAdapter extends BaseAdapter {
+public abstract class BaseSwipeListAdapter extends BaseAdapter {
 
-    public boolean getSwipEnableByPosition(int position) {
+    public boolean getSwipeEnableByPosition(int position) {
         return true;
     }
 }

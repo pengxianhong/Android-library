@@ -9,13 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.WrapperListAdapter;
 
-
-/**
- * @author baoyz
- * @date 2014-8-24
- */
-public class SwipeMenuAdapter implements WrapperListAdapter,
-        SwipeMenuView.OnSwipeItemClickListener {
+public class SwipeMenuAdapter implements WrapperListAdapter, SwipeMenuView.OnSwipeItemClickListener {
 
     private ListAdapter mAdapter;
     private Context mContext;
@@ -49,24 +43,20 @@ public class SwipeMenuAdapter implements WrapperListAdapter,
             SwipeMenu menu = new SwipeMenu(mContext);
             menu.setViewType(getItemViewType(position));
             createMenu(menu);
-            SwipeMenuView menuView = new SwipeMenuView(menu,
-                    (SwipeMenuListView) parent);
+            SwipeMenuView menuView = new SwipeMenuView(menu, (SwipeMenuListView) parent);
             menuView.setOnSwipeItemClickListener(this);
             SwipeMenuListView listView = (SwipeMenuListView) parent;
-            layout = new SwipeMenuLayout(contentView, menuView,
-                    listView.getCloseInterpolator(),
-                    listView.getOpenInterpolator());
+            layout = new SwipeMenuLayout(contentView, menuView, listView.getCloseInterpolator(), listView.getOpenInterpolator());
             layout.setPosition(position);
         } else {
             layout = (SwipeMenuLayout) convertView;
             layout.closeMenu();
             layout.setPosition(position);
-            View view = mAdapter.getView(position, layout.getContentView(),
-                    parent);
+            View view = mAdapter.getView(position, layout.getContentView(), parent);
         }
-        if (mAdapter instanceof BaseSwipListAdapter) {
-            boolean swipEnable = (((BaseSwipListAdapter) mAdapter).getSwipEnableByPosition(position));
-            layout.setSwipEnable(swipEnable);
+        if (mAdapter instanceof BaseSwipeListAdapter) {
+            boolean swipeEnable = (((BaseSwipeListAdapter) mAdapter).getSwipeEnableByPosition(position));
+            layout.setSwipeEnable(swipeEnable);
         }
         return layout;
     }
@@ -89,13 +79,11 @@ public class SwipeMenuAdapter implements WrapperListAdapter,
     @Override
     public void onItemClick(SwipeMenuView view, SwipeMenu menu, int index) {
         if (onMenuItemClickListener != null) {
-            onMenuItemClickListener.onMenuItemClick(view.getPosition(), menu,
-                    index);
+            onMenuItemClickListener.onMenuItemClick(view.getPosition(), menu, index);
         }
     }
 
-    public void setOnSwipeItemClickListener(
-            SwipeMenuListView.OnMenuItemClickListener onMenuItemClickListener) {
+    public void setOnSwipeItemClickListener(SwipeMenuListView.OnMenuItemClickListener onMenuItemClickListener) {
         this.onMenuItemClickListener = onMenuItemClickListener;
     }
 

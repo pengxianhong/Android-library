@@ -9,10 +9,6 @@ import android.view.animation.Interpolator;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-/**
- * @author baoyz
- * @date 2014-8-18
- */
 public class SwipeMenuListView extends ListView {
 
     private static final int TOUCH_STATE_NONE = 0;
@@ -70,12 +66,10 @@ public class SwipeMenuListView extends ListView {
             }
 
             @Override
-            public void onItemClick(SwipeMenuView view, SwipeMenu menu,
-                                    int index) {
+            public void onItemClick(SwipeMenuView view, SwipeMenu menu, int index) {
                 boolean flag = false;
                 if (mOnMenuItemClickListener != null) {
-                    flag = mOnMenuItemClickListener.onMenuItemClick(
-                            view.getPosition(), menu, index);
+                    flag = mOnMenuItemClickListener.onMenuItemClick(view.getPosition(), menu, index);
                 }
                 if (mTouchView != null && !flag) {
                     mTouchView.smoothCloseMenu();
@@ -166,8 +160,7 @@ public class SwipeMenuListView extends ListView {
 
                 mTouchPosition = pointToPosition((int) ev.getX(), (int) ev.getY());
 
-                if (mTouchPosition == oldPos && mTouchView != null
-                        && mTouchView.isOpen()) {
+                if (mTouchPosition == oldPos && mTouchView != null && mTouchView.isOpen()) {
                     mTouchState = TOUCH_STATE_X;
                     mTouchView.onSwipe(ev);
                     return true;
@@ -201,7 +194,7 @@ public class SwipeMenuListView extends ListView {
                 mTouchPosition = pointToPosition((int) ev.getX(), (int) ev.getY()) - getHeaderViewsCount();
                 //如果滑动了一下没完全展现，就收回去，这时候mTouchView已经赋值，再滑动另外一个不可以swip的view
                 //会导致mTouchView swip 。 所以要用位置判断是否滑动的是一个view
-                if (!mTouchView.getSwipEnable() || mTouchPosition != mTouchView.getPosition()) {
+                if (!mTouchView.getSwipeEnable() || mTouchPosition != mTouchView.getPosition()) {
                     break;
                 }
                 float dy = Math.abs((ev.getY() - mDownY));
@@ -278,8 +271,7 @@ public class SwipeMenuListView extends ListView {
     }
 
     private int dp2px(int dp) {
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp,
-                getContext().getResources().getDisplayMetrics());
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, getContext().getResources().getDisplayMetrics());
     }
 
     public void setMenuCreator(SwipeMenuCreator menuCreator) {
