@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!--android:name=".InstallApkProvider"-->
+    <!--/storage/emulated/0/apkVersion/KotlinApp.apk-->
+    <!--name可以随意命名-->
+    <!--path是文件存放路径-->
+    <external-path
+        name="kt_image"
+        path="Pictures" />
+</paths>

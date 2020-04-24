@@ -1,18 +1,24 @@
 package com.pengxh.app.androidlib;
 
-import android.app.Dialog;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.net.Uri;
+import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.bumptech.glide.Glide;
 import com.pengxh.app.multilib.base.BaseNormalActivity;
-import com.pengxh.app.multilib.utils.StringUtil;
-import com.pengxh.app.multilib.widget.EasyToast;
-import com.pengxh.app.multilib.widget.dialog.MultiSelectBean;
-import com.pengxh.app.multilib.widget.dialog.MultiSelectDialog;
+import com.pengxh.app.multilib.utils.ImageCompressListener;
+import com.pengxh.app.multilib.utils.ImageUtil;
+import com.zhihu.matisse.Matisse;
+import com.zhihu.matisse.MimeType;
+import com.zhihu.matisse.engine.impl.GlideEngine;
+import com.zhihu.matisse.internal.entity.CaptureStrategy;
 
-import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -21,8 +27,15 @@ import butterknife.OnClick;
 public class MainActivity extends BaseNormalActivity implements View.OnClickListener {
 
     private static final String TAG = "MainActivity";
-    @BindView(R.id.mButton)
-    Button mButton;
+    private static final int REQUEST_CODE_SELECT = 100;
+
+    @BindView(R.id.mStartTest)
+    Button mStartTest;
+    @BindView(R.id.mStartCompress)
+    Button mStartCompress;
+    @BindView(R.id.testIV)
+    ImageView testIV;
+    private List<String> pathList=new ArrayList<>();
 
     @Override
     public void initView() {
@@ -39,38 +52,58 @@ public class MainActivity extends BaseNormalActivity implements View.OnClickList
 
     }
 
-    @OnClick(R.id.mButton)
+    @OnClick({R.id.mStartTest, R.id.mStartCompress})
     @Override
     public void onClick(View view) {
-        String data = StringUtil.getAssetsData(this, "testData.json");
-        Type type = new TypeToken<List<MultiSelectBean>>() {
-        }.getType();
-        List<MultiSelectBean> mItemList = new Gson().fromJson(data, type);
-        new MultiSelectDialog.Builder().setContext(this)
-                .setTitle("选择设备")
-                .setData(mItemList)
-                .setNegativeButton("取消")
-                .setPositiveButton("确定")
-                .setOnDialogClickListener(new MultiDialogClickListener())
-                .setCancelable(false)
-                .build().show();
+        switch (view.getId()) {
+            case R.id.mStartTest:
+                Matisse.from(this)
+                        .choose(MimeType.ofImage())
+                        .countable(true) //是否显示数字
+                        .showSingleMediaType(true)
+                        //这两行要连用 是否在选择图片中展示照相 和适配安卓7.0 FileProvider
+                        .capture(true)
+                        //参数2与 AndroidManifest中authorities值相同，用于适配7.0系统 必须设置
+                        .captureStrategy(new CaptureStrategy(true, "com.pengxh.app.androidlib.fileprovider"))
+                        .countable(true)
+                        //最大选择数量为9
+                        .maxSelectable(9)
+                        //选择方向
+                        .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
+                        //界面中缩略图的质量
+                        .thumbnailScale(0.85f)
+                        //蓝色主题
+                        .theme(R.style.Matisse_Zhihu)
+                        .imageEngine(new GlideEngine())
+                        .forResult(REQUEST_CODE_SELECT);
+                break;
+            case R.id.mStartCompress:
+                ImageUtil.compressBatchImage(this, pathList, new ImageCompressListener() {
+                    @Override
+                    public void onSuccess(List<String> result) {
+                        Log.d(TAG, "onSuccess: " + result);
+                    }
+
+                    @Override
+                    public void onFailure(Throwable t) {
+                        Log.d(TAG, "onFailure: "+t);
+                    }
+                });
+                break;
+        }
     }
 
-    class MultiDialogClickListener implements MultiSelectDialog.onDialogClickListener {
-
-        @Override
-        public void onConfirmClick(Dialog dialog, List<String> list) {
-            if (list == null || list.size() == 0) {
-                EasyToast.showToast("什么都还没选中，无法添加！", EasyToast.ERROR);
-            } else {
-                EasyToast.showToast("当前选中: " + list, EasyToast.SUCCESS);
-                dialog.dismiss();
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_SELECT && resultCode == RESULT_OK) {
+            List<Uri> uris = Matisse.obtainResult(data);
+            //Uri需要转换为Path
+            for (Uri uri : uris) {
+                pathList.add(ImageUtil.getImagePath(this,uri));
             }
-        }
 
-        @Override
-        public void onCancelClick(Dialog dialog) {
-            dialog.dismiss();
+            Glide.with(this).load(uris.get(0)).into(testIV);
         }
     }
 }

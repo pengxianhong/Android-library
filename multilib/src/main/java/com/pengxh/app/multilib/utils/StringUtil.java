@@ -1,6 +1,7 @@
 package com.pengxh.app.multilib.utils;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -59,6 +60,25 @@ public class StringUtil {
             boolean isMatch = m.matches();
             if (!isMatch) {
                 Log.e(TAG, "输入的手机号格式不对：" + phoneNumber);
+            }
+            return isMatch;
+        }
+    }
+
+    /**
+     * 匹配邮箱地址
+     */
+    public static boolean isEmail(String email) {
+        if (TextUtils.isEmpty(email)) {
+            Log.e(TAG, "邮箱地址不能为空：" + email);
+            return false;
+        } else {
+            String regExp = "^[a-z0-9]+([._\\\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$";
+            Pattern p = Pattern.compile(regExp);
+            Matcher m = p.matcher(email);
+            boolean isMatch = m.matches();
+            if (!isMatch) {
+                Log.e(TAG, "输入的邮箱地址格式不对：" + email);
             }
             return isMatch;
         }

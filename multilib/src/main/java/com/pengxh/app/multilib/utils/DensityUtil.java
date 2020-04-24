@@ -1,11 +1,15 @@
 package com.pengxh.app.multilib.utils;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AbsListView;
 import android.widget.ListAdapter;
+
+import java.util.HashMap;
 
 public class DensityUtil {
 
@@ -151,5 +155,24 @@ public class DensityUtil {
     public static float getPixelScaleFactor(Context context) {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         return (displayMetrics.xdpi / 160.0f);
+    }
+
+    public static HashMap<String, Integer> getDisplaySize(Context context) {
+        WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics dm = new DisplayMetrics();
+        manager.getDefaultDisplay().getMetrics(dm);
+        int displayWidthPx = dm.widthPixels;
+        //TODO 手机纵向像素高度还需要加上底部导航栏高度
+        int height = dm.heightPixels;
+        Resources res = context.getResources();
+        //获取导航栏
+        int navigationBarId = res.getIdentifier("navigation_bar_height", "dimen", "android");
+        int navigationBarHeight = res.getDimensionPixelSize(navigationBarId);
+        int displayHeightPx = height + navigationBarHeight;
+
+        HashMap<String, Integer> displaySizeMap = new HashMap<>();
+        displaySizeMap.put("widthPx", displayWidthPx);
+        displaySizeMap.put("heightPx", displayHeightPx);
+        return displaySizeMap;
     }
 }

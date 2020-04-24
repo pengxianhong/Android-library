@@ -32,4 +32,6 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.2.16'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'com.squareup.okhttp:okhttp:2.0.0'
+    //图片压缩框架
+    implementation 'top.zibin:Luban:1.1.8'
 }
