@@ -35,11 +35,11 @@ public class MainActivity extends BaseNormalActivity implements View.OnClickList
     Button mStartCompress;
     @BindView(R.id.testIV)
     ImageView testIV;
-    private List<String> pathList=new ArrayList<>();
+    private List<String> pathList = new ArrayList<>();
 
     @Override
-    public void initView() {
-        setContentView(R.layout.activity_main);
+    public int initLayoutView() {
+        return R.layout.activity_main;
     }
 
     @Override
@@ -86,7 +86,7 @@ public class MainActivity extends BaseNormalActivity implements View.OnClickList
 
                     @Override
                     public void onFailure(Throwable t) {
-                        Log.d(TAG, "onFailure: "+t);
+                        Log.d(TAG, "onFailure: " + t);
                     }
                 });
                 break;
@@ -100,7 +100,7 @@ public class MainActivity extends BaseNormalActivity implements View.OnClickList
             List<Uri> uris = Matisse.obtainResult(data);
             //Uri需要转换为Path
             for (Uri uri : uris) {
-                pathList.add(ImageUtil.getImagePath(this,uri));
+                pathList.add(ImageUtil.getImagePath(this, uri));
             }
 
             Glide.with(this).load(uris.get(0)).into(testIV);

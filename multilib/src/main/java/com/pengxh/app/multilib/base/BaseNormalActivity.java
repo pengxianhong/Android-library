@@ -3,7 +3,6 @@ package com.pengxh.app.multilib.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import butterknife.ButterKnife;
 
@@ -12,40 +11,24 @@ public abstract class BaseNormalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initView();
+        setContentView(initLayoutView());
+        ButterKnife.bind(this);
         initData();
         initEvent();
-        bundleInOnCreate(savedInstanceState);
     }
 
-    @Override
-    public void setContentView(int layoutResID) {
-        super.setContentView(layoutResID);
-        ButterKnife.bind(this);
-    }
+    /**
+     * 初始化xml布局
+     */
+    public abstract int initLayoutView();
 
-    public abstract void initView();
-
+    /**
+     * 初始化默认数据
+     */
     public abstract void initData();
 
+    /**
+     * 初始化业务逻辑
+     */
     public abstract void initEvent();
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-
-    public void bundleInOnCreate(Bundle savedInstanceState) {
-        Log.d("BaseNormalActivity", "bundleInOnCreate: " + savedInstanceState);
-    }
 }

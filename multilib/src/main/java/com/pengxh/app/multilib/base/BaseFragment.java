@@ -76,7 +76,7 @@ public abstract class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(getLayoutId(), container, false);
+        view = inflater.inflate(setLayoutView(), container, false);
         ButterKnife.bind(this, view);
         mContext = getActivity();
         this.initData();
@@ -88,7 +88,7 @@ public abstract class BaseFragment extends Fragment {
      *
      * @return
      */
-    protected abstract int getLayoutId();
+    protected abstract int setLayoutView();
 
     /**
      * 数据初始化操作
