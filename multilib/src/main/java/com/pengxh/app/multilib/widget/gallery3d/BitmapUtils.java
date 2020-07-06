@@ -51,7 +51,6 @@ public class BitmapUtils {
                 int widthRatio = Math.round((float) width / (float) reqWidth);
                 inSampleSize = heightRatio < widthRatio ? widthRatio : heightRatio;
             }
-
             return inSampleSize;
         }
     }

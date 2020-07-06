@@ -56,18 +56,14 @@ public class BlurBitmapUtils {
         // 创建Allocation对象的时候其实内存是空的,需要使用copyTo()将数据填充进去。
         Allocation tmpIn = Allocation.createFromBitmap(rs, inputBitmap);
         Allocation tmpOut = Allocation.createFromBitmap(rs, outputBitmap);
-
         // 设置渲染的模糊程度, 25f是最大模糊度
         blurScript.setRadius(radius);
         // 设置blurScript对象的输入内存
         blurScript.setInput(tmpIn);
         // 将输出数据保存到输出内存中
         blurScript.forEach(tmpOut);
-
         // 将数据填充到Allocation中
         tmpOut.copyTo(outputBitmap);
-
         return outputBitmap;
     }
-
 }

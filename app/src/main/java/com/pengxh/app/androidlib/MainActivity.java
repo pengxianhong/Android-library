@@ -1,14 +1,10 @@
 package com.pengxh.app.androidlib;
 
-import android.util.Log;
 import android.view.View;
 
 import com.pengxh.app.multilib.base.BaseNormalActivity;
-import com.pengxh.app.multilib.utils.DensityUtil;
 
 public class MainActivity extends BaseNormalActivity implements View.OnClickListener {
-
-    private static final String TAG = "MainActivity";
 
     @Override
     public int initLayoutView() {
@@ -17,7 +13,7 @@ public class MainActivity extends BaseNormalActivity implements View.OnClickList
 
     @Override
     public void initData() {
-        Log.d(TAG, "initData: " + DensityUtil.px2dp(this, 90));
+
     }
 
     @Override

@@ -9,7 +9,6 @@ import android.graphics.Bitmap;
  * @date: 2020/2/26 17:14
  */
 public interface BitmapCallBackListener {
-
     void onSuccess(Bitmap bitmap);
 
     void onFailure(Throwable t);

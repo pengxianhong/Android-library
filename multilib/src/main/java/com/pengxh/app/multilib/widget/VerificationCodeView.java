@@ -7,13 +7,14 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 import com.pengxh.app.multilib.R;
 
@@ -37,12 +38,12 @@ public class VerificationCodeView extends TextView implements View.OnClickListen
     /**
      * 验证码文字长度
      */
-    private int mTextLenth;
+    private int mTextLength;
 
     /**
      * 验证码默认文字长度
      */
-    private int mDefaultLenth = 4;
+    private static final int mDefaultLength = 4;
 
     /**
      * 验证码文字大小
@@ -64,7 +65,7 @@ public class VerificationCodeView extends TextView implements View.OnClickListen
      */
     private Rect mRect;
     private Paint mPaint;
-    private OnCodeChangedListenser mChangedListenser;
+    private OnCodeChangedListener mChangedListener;
 
     public VerificationCodeView(Context context) {
         super(context);
@@ -85,7 +86,7 @@ public class VerificationCodeView extends TextView implements View.OnClickListen
         mTextSize = typedArray.getDimensionPixelSize(R.styleable.VerificationCodeView_text_size, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 20, getResources().getDisplayMetrics()));
         mTextColor = typedArray.getColor(R.styleable.VerificationCodeView_text_color, Color.GREEN);
         mViewBgColor = typedArray.getColor(R.styleable.VerificationCodeView_view_background, Color.LTGRAY);
-        mTextLenth = typedArray.getInt(R.styleable.VerificationCodeView_text_length, mDefaultLenth);
+        mTextLength = typedArray.getInt(R.styleable.VerificationCodeView_text_length, mDefaultLength);
 
         typedArray.recycle();
         /**
@@ -222,12 +223,12 @@ public class VerificationCodeView extends TextView implements View.OnClickListen
         /**
          * 点击获取随机数
          * */
-        mText = randomNumber(mTextLenth);
-        if (mChangedListenser == null) {
+        mText = randomNumber(mTextLength);
+        if (mChangedListener == null) {
             Log.e(TAG, "OnCodeChangedListenser is null");
             return;
         } else {
-            mChangedListenser.getCode(mText);
+            mChangedListener.getCode(mText);
         }
         postInvalidate();
     }
@@ -250,11 +251,11 @@ public class VerificationCodeView extends TextView implements View.OnClickListen
         return number.toString();
     }
 
-    public interface OnCodeChangedListenser {
+    public interface OnCodeChangedListener {
         void getCode(String code);
     }
 
-    public void setOnCodeChangedListenser(OnCodeChangedListenser listenser) {
-        this.mChangedListenser = listenser;
+    public void setOnCodeChangedListener(OnCodeChangedListener listener) {
+        this.mChangedListener = listener;
     }
 }

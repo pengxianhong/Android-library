@@ -28,9 +28,8 @@ import com.pengxh.app.multilib.R;
 public class CircleImageView extends ImageView {
 
     private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;
-
     private static final Bitmap.Config BITMAP_CONFIG = Bitmap.Config.ARGB_8888;
-    private static final int COLORDRAWABLE_DIMENSION = 1;
+    private static final int COLOR_DRAWABLE_DIMENSION = 1;
 
     private static final int DEFAULT_BORDER_WIDTH = 0;
     private static final int DEFAULT_BORDER_COLOR = Color.BLACK;
@@ -100,9 +99,8 @@ public class CircleImageView extends ImageView {
         if (getDrawable() == null) {
             return;
         }
-
-        canvas.drawCircle(getWidth() / 2, getHeight() / 2, mDrawableRadius, mBitmapPaint);
-        canvas.drawCircle(getWidth() / 2, getHeight() / 2, mBorderRadius, mBorderPaint);
+        canvas.drawCircle((float) getWidth() / 2, (float) getHeight() / 2, mDrawableRadius, mBitmapPaint);
+        canvas.drawCircle((float) getWidth() / 2, (float) getHeight() / 2, mBorderRadius, mBorderPaint);
     }
 
     @Override
@@ -119,7 +117,6 @@ public class CircleImageView extends ImageView {
         if (borderColor == mBorderColor) {
             return;
         }
-
         mBorderColor = borderColor;
         mBorderPaint.setColor(mBorderColor);
         invalidate();
@@ -133,7 +130,6 @@ public class CircleImageView extends ImageView {
         if (borderWidth == mBorderWidth) {
             return;
         }
-
         mBorderWidth = borderWidth;
         setup();
     }
@@ -163,20 +159,17 @@ public class CircleImageView extends ImageView {
         if (drawable == null) {
             return null;
         }
-
         if (drawable instanceof BitmapDrawable) {
             return ((BitmapDrawable) drawable).getBitmap();
         }
 
         try {
             Bitmap bitmap;
-
             if (drawable instanceof ColorDrawable) {
-                bitmap = Bitmap.createBitmap(COLORDRAWABLE_DIMENSION, COLORDRAWABLE_DIMENSION, BITMAP_CONFIG);
+                bitmap = Bitmap.createBitmap(COLOR_DRAWABLE_DIMENSION, COLOR_DRAWABLE_DIMENSION, BITMAP_CONFIG);
             } else {
                 bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), BITMAP_CONFIG);
             }
-
             Canvas canvas = new Canvas(bitmap);
             drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
             drawable.draw(canvas);
@@ -191,11 +184,9 @@ public class CircleImageView extends ImageView {
             mSetupPending = true;
             return;
         }
-
         if (mBitmap == null) {
             return;
         }
-
         mBitmapShader = new BitmapShader(mBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
 
         mBitmapPaint.setAntiAlias(true);
@@ -223,7 +214,6 @@ public class CircleImageView extends ImageView {
         float scale;
         float dx = 0;
         float dy = 0;
-
         mShaderMatrix.set(null);
 
         if (mBitmapWidth * mDrawableRect.height() > mDrawableRect.width() * mBitmapHeight) {
@@ -233,11 +223,8 @@ public class CircleImageView extends ImageView {
             scale = mDrawableRect.width() / (float) mBitmapWidth;
             dy = (mDrawableRect.height() - mBitmapHeight * scale) * 0.5f;
         }
-
         mShaderMatrix.setScale(scale, scale);
         mShaderMatrix.postTranslate((int) (dx + 0.5f) + mBorderWidth, (int) (dy + 0.5f) + mBorderWidth);
-
         mBitmapShader.setLocalMatrix(mShaderMatrix);
     }
-
 }

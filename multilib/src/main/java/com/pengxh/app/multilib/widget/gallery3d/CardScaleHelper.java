@@ -1,8 +1,8 @@
 package com.pengxh.app.multilib.widget.gallery3d;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
 import com.pengxh.app.multilib.utils.DensityUtil;

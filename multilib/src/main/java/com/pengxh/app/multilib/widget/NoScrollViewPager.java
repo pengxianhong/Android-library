@@ -1,9 +1,10 @@
 package com.pengxh.app.multilib.widget;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+
+import androidx.viewpager.widget.ViewPager;
 
 public class NoScrollViewPager extends ViewPager {
 
@@ -52,9 +53,6 @@ public class NoScrollViewPager extends ViewPager {
     public boolean onTouchEvent(MotionEvent ev) {
         //return false;// 可行,不消费,传给父控件
         //return true;// 可行,消费,拦截事件
-        //super.onTouchEvent(ev); //不行,
-        //虽然onInterceptTouchEvent中拦截了,
-        //但是如果viewpage里面子控件不是viewgroup,还是会调用这个方法.
         if (isScroll) {
             return super.onTouchEvent(ev);
         } else {

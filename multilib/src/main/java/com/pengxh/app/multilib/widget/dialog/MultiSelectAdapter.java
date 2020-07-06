@@ -2,7 +2,7 @@ package com.pengxh.app.multilib.widget.dialog;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.support.constraint.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;

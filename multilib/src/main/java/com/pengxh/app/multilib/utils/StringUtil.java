@@ -91,7 +91,7 @@ public class StringUtil {
         try {
             InputStreamReader inputStreamReader = new InputStreamReader(context.getAssets().open(fileName));
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-            StringBuffer data = new StringBuffer();
+            StringBuilder data = new StringBuilder();
             String s;
             try {
                 while ((s = bufferedReader.readLine()) != null) {
