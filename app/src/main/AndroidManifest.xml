@@ -26,16 +26,5 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-
-        <provider
-            android:name=".ImageProvider"
-            android:authorities="${applicationId}.fileprovider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths_public" />
-        </provider>
     </application>
-
 </manifest>
