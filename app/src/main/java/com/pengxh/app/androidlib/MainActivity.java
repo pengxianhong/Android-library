@@ -1,9 +1,9 @@
 package com.pengxh.app.androidlib;
 
+import android.content.Intent;
 import android.view.View;
 
 import com.pengxh.app.multilib.base.BaseNormalActivity;
-import com.pengxh.app.multilib.utils.LogToFile;
 
 import butterknife.OnClick;
 
@@ -23,14 +23,14 @@ public class MainActivity extends BaseNormalActivity implements View.OnClickList
 
     @Override
     public void initEvent() {
-
+        startService(new Intent(this, KeepAliveService.class));
     }
 
-    @OnClick({R.id.startService})
+    @OnClick({R.id.startView, R.id.stopView})
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.startService:
+            case R.id.startView:
 
                 break;
         }

@@ -36,5 +36,4 @@ dependencies {
     //Google官方授权库
     implementation 'pub.devrel:easypermissions:1.3.0'
     implementation project(path: ':multilib')
-    implementation 'com.orhanobut:logger:2.2.0'
 }
