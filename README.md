@@ -51,7 +51,7 @@ EasyToast.showToast("MainActivity", EasyToast.ERROR);
         app:border_color="@color/colorMain"
         app:border_width="1dp" />
 ```
-效果图
+效果图  
 ![CircleImageView](https://github.com/pengxianhong/Android-library/blob/master/demoImage/circleImage.jpg)
 ### 3. SwipeMenuListView
 首先这个库要先感谢[baoyongzhang](https://github.com/baoyongzhang/SwipeMenuListView)。这个库作者已经不在更新，但是由于该库效果比较出众，所以，我就收录过来了，这里简单说下该库的使用方法，详细介绍可以看原库
@@ -108,7 +108,7 @@ swipeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
     }
 });
 ```
-效果图
+效果图  
 ![SwipeMenuListView](https://github.com/pengxianhong/Android-library/blob/master/demoImage/swipeListView_0.jpg)
 ![SwipeMenuListView](https://github.com/pengxianhong/Android-library/blob/master/demoImage/swipeListView_1.jpg)
 ### 4. SpeedRecyclerView
@@ -146,13 +146,13 @@ class InputDialogClickListener implements InputDialog.onDialogClickListener {
 ```
 
 ### 5. InputDialog
-效果图
+效果图  
 ![InputDialog](https://github.com/pengxianhong/Android-library/blob/master/demoImage/inputDialog.jpg)
 
 ### 6. MultiSelectDialog
-效果图
+效果图  
 ![MultiSelectDialog](https://github.com/pengxianhong/Android-library/blob/master/demoImage/multiSelectDialog.jpg)
 
 ### 7. PermissionDialog
-效果图
+效果图  
 ![PermissionDialog](https://github.com/pengxianhong/Android-library/blob/master/demoImage/permissionDialog.jpg)
