@@ -1,4 +1,4 @@
-package com.pengxh.app.multilib.utils;
+package com.pengxh.app.multilib.interfaces;
 
 import java.util.List;
 

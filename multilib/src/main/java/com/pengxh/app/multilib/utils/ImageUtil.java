@@ -11,6 +11,9 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.pengxh.app.multilib.interfaces.BitmapCallBackListener;
+import com.pengxh.app.multilib.interfaces.ImageCompressListener;
+
 import java.io.File;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -127,7 +130,7 @@ public class ImageUtil {
 
     /**
      * 只能获取content类型的FileProvide
-     * */
+     */
     public static String getImagePath(Context context, Uri contentUri) {
         String path = null;
         //通过Uri和selection来获取真实的图片路径
