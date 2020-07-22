@@ -273,8 +273,10 @@ notificationHelper.push(100, notification);
 
 ```java
 notificationHelper.cancel(100);
-```java
+```
+
 ### 6. SaveKeyValues
+
 这个类是我自己用的比较多的一个工具，主要是用法简单，不过用之前需要在BaseApplication中全局初始化一下
 
 ```java
