@@ -261,6 +261,7 @@ cacheSize.text = FileUtil.formatFileSize(fileSize)
 ### 5. NotificationHelper
 
 这个是最近才加上来的一个帮助类。8.0之后通知使用方式变了，所以为了一劳永逸，就撸了一个工具类，用法如下：
+
 发通知
 
 ```java
