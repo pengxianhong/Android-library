@@ -8,13 +8,13 @@ This is an Android dependent library
 ### Step 1. Add the JitPack repository to your build file  
 Add it in your root build.gradle at the end of repositories:  
 ```
-	repositories {
-        maven { url 'https://jitpack.io' }
-	}
+repositories {
+    maven { url 'https://jitpack.io' }
+}
 ```
 ### Step 2. Add the dependency  
 ```
 dependencies {
-        implementation 'com.github.pengxianhong:Android-library:1.5'
-	}
+    implementation 'com.github.pengxianhong:Android-library:1.5'
+}
 ```
