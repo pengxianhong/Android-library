@@ -36,7 +36,7 @@ EasyToast.showToast("MainActivity", EasyToast.WARING);
 EasyToast.showToast("MainActivity", EasyToast.ERROR);
 ```
 效果图  
-![EasyToast](https://github.com/pengxianhong/Android-library/blob/master/demoImage/toast_0.jpg)  
+![EasyToast](https://github.com/pengxianhong/Android-library/blob/master/demoImage/toast_0.jpg)
 ![EasyToast](https://github.com/pengxianhong/Android-library/blob/master/demoImage/toast_1.jpg)  
-![EasyToast](https://github.com/pengxianhong/Android-library/blob/master/demoImage/toast_2.jpg)  
+![EasyToast](https://github.com/pengxianhong/Android-library/blob/master/demoImage/toast_2.jpg)
 ![EasyToast](https://github.com/pengxianhong/Android-library/blob/master/demoImage/toast_3.jpg)  
