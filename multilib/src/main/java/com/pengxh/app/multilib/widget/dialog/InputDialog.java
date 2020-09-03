@@ -18,7 +18,7 @@ public class InputDialog extends Dialog implements View.OnClickListener {
     private String positiveBtn;
     private String negativeBtn;
     private boolean cancelable;
-    private onDialogClickListener listener;
+    private DialogClickListener listener;
     private EditText mInputMessage;
 
     private InputDialog(Builder builder) {
@@ -35,8 +35,7 @@ public class InputDialog extends Dialog implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_input);
         initView();
-        setCanceledOnTouchOutside(false);
-        this.setCancelable(cancelable);
+        this.setCanceledOnTouchOutside(cancelable);
     }
 
     private void initView() {
@@ -63,16 +62,15 @@ public class InputDialog extends Dialog implements View.OnClickListener {
         int i = view.getId();
         if (i == R.id.mDialogCancel) {
             if (listener != null) {
-                listener.onCancelClick(this);
+                listener.onCancelClick();
+                this.dismiss();
             }
         } else if (i == R.id.mDialogConfirm) {
             if (listener != null) {
-                String inputString = mInputMessage.getText().toString().trim();
-                Log.d(TAG, "onClick: " + inputString);
-                listener.onConfirmClick(this, inputString);
+                String inputValue = mInputMessage.getText().toString().trim();
+                Log.d(TAG, "onClick: " + inputValue);
+                listener.onConfirmClick(this, inputValue);
             }
-        } else {
-            Log.e(TAG, "onClick: Error view ID");
         }
     }
 
@@ -82,7 +80,7 @@ public class InputDialog extends Dialog implements View.OnClickListener {
         private String positiveBtn;
         private String negativeBtn;
         private boolean cancelable;
-        private onDialogClickListener listener;
+        private DialogClickListener listener;
 
         public Builder setContext(Context context) {
             this.mContext = context;
@@ -104,12 +102,12 @@ public class InputDialog extends Dialog implements View.OnClickListener {
             return this;
         }
 
-        public Builder setCancelable(boolean cancelable) {
+        public Builder setOutsideCancelable(boolean cancelable) {
             this.cancelable = cancelable;
             return this;
         }
 
-        public Builder setOnDialogClickListener(onDialogClickListener listener) {
+        public Builder setOnDialogClickListener(DialogClickListener listener) {
             this.listener = listener;
             return this;
         }
@@ -119,9 +117,9 @@ public class InputDialog extends Dialog implements View.OnClickListener {
         }
     }
 
-    public interface onDialogClickListener {
-        void onConfirmClick(Dialog dialog, String input);
+    public interface DialogClickListener {
+        void onConfirmClick(Dialog dialog, String value);
 
-        void onCancelClick(Dialog dialog);
+        void onCancelClick();
     }
 }

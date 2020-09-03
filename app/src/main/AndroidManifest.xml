@@ -28,7 +28,5 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".TargetActivity" />
-
-        <service android:name=".KeepAliveService" />
     </application>
 </manifest>
