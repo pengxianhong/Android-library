@@ -2,7 +2,6 @@ package com.pengxh.app.multilib.widget.dialog;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.bumptech.glide.Glide;
 import com.pengxh.app.multilib.R;
@@ -80,12 +81,11 @@ public class MultiSelectAdapter extends BaseAdapter {
     }
 
     class EquipmentListViewHolder {
-
-        ConstraintLayout mDialogListItem;
-        ImageView mStartImage;
-        TextView mTextViewTips;
-        TextView mTextViewDes;
-        SmoothCheckBox mCheckBox;
+        private ConstraintLayout mDialogListItem;
+        private ImageView mStartImage;
+        private TextView mTextViewTips;
+        private TextView mTextViewDes;
+        private SmoothCheckBox mCheckBox;
 
         void bindHolder(MultiSelectBean bean) {
             mTextViewTips.setText(bean.getTips());

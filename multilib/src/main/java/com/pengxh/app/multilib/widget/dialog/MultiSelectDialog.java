@@ -25,7 +25,7 @@ public class MultiSelectDialog extends Dialog implements View.OnClickListener, M
     private static final String TAG = "MultiSelectDialog";
     private Context context;
     private boolean cancelable;
-    private onDialogClickListener listener;
+    private OnDialogClickListener listener;
     private String title;
     private List<MultiSelectBean> inputList;//需要绑定的数据集
     private List<String> outputList;//用户勾选多选框之后收集的数据
@@ -37,8 +37,7 @@ public class MultiSelectDialog extends Dialog implements View.OnClickListener, M
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_mutilselect);
         initView();
-        setCanceledOnTouchOutside(false);//点击外部区域无法取消对话框
-        this.setCancelable(cancelable);
+        setCanceledOnTouchOutside(cancelable);//点击外部区域无法取消对话框
     }
 
     private void initView() {
@@ -83,7 +82,7 @@ public class MultiSelectDialog extends Dialog implements View.OnClickListener, M
         private String positiveBtn;//确定按钮
         private String negativeBtn;//取消按钮
         private boolean cancelable;//对话框是否可取消
-        private onDialogClickListener listener;//按钮监听
+        private OnDialogClickListener listener;//按钮监听
 
         public Builder setContext(Context context) {
             this.mContext = context;
@@ -110,12 +109,12 @@ public class MultiSelectDialog extends Dialog implements View.OnClickListener, M
             return this;
         }
 
-        public Builder setCancelable(boolean cancelable) {
+        public Builder setOutsideCancelable(boolean cancelable) {
             this.cancelable = cancelable;
             return this;
         }
 
-        public Builder setOnDialogClickListener(onDialogClickListener listener) {
+        public Builder setOnDialogClickListener(OnDialogClickListener listener) {
             this.listener = listener;
             return this;
         }
@@ -125,10 +124,10 @@ public class MultiSelectDialog extends Dialog implements View.OnClickListener, M
         }
     }
 
-    public interface onDialogClickListener {
+    public interface OnDialogClickListener {
         void onConfirmClick(Dialog dialog, List<String> list);
 
-        void onCancelClick(Dialog dialog);
+        void onCancelClick();
     }
 
     @Override
@@ -136,15 +135,14 @@ public class MultiSelectDialog extends Dialog implements View.OnClickListener, M
         int i = v.getId();
         if (i == R.id.multiDialogCancel) {
             if (listener != null) {
-                listener.onCancelClick(this);
+                listener.onCancelClick();
+                dismiss();
             }
         } else if (i == R.id.multiDialogConfirm) {
             if (listener != null) {
                 Log.d(TAG, "onClick: " + outputList);
                 listener.onConfirmClick(this, outputList);
             }
-        } else {
-            Log.e(TAG, "onClick: Error view ID");
         }
     }
 

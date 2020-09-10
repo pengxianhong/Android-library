@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:gravity="center_horizontal"
-            android:text="为了您能正常使用，需要以下权限"
+            android:text="为了您能正常使用，需要以下权限："
             android:textColor="#87000000"
             android:textSize="16sp" />
 

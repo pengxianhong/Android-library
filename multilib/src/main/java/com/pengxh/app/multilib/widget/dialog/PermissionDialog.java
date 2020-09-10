@@ -2,13 +2,13 @@ package com.pengxh.app.multilib.widget.dialog;
 
 import android.content.Context;
 import android.os.Bundle;
-import androidx.appcompat.app.AlertDialog;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.pengxh.app.multilib.R;
 
@@ -22,7 +22,7 @@ public class PermissionDialog extends AlertDialog implements View.OnClickListene
 
     private static final String TAG = "PermissionDialog";
     private Context context;
-    private onDialogClickListener dialogListener;
+    private OnDialogClickListener dialogListener;
     private String[] permissionArrays;
 
     public PermissionDialog(Builder builder) {
@@ -65,35 +65,32 @@ public class PermissionDialog extends AlertDialog implements View.OnClickListene
         int i = v.getId();
         if (i == R.id.permissionBtn) {
             if (dialogListener != null) {
-                dismiss();
                 dialogListener.onButtonClick();
             }
         } else if (i == R.id.permissionCancel) {
             if (dialogListener != null) {
-                dismiss();
                 dialogListener.onCancelClick();
             }
-        } else {
-            Log.e(TAG, "onClick: Error view id = " + i);
         }
+        dismiss();
     }
 
     public static class Builder {
         private Context mContext;
         private String[] arrays;
-        private onDialogClickListener listener;
+        private OnDialogClickListener listener;
 
         public Builder setContext(Context context) {
             this.mContext = context;
             return this;
         }
 
-        public Builder setPermission(String[] arrays) {
+        public Builder setPermissions(String[] arrays) {
             this.arrays = arrays;
             return this;
         }
 
-        public Builder setOnDialogClickListener(onDialogClickListener listener) {
+        public Builder setOnDialogClickListener(OnDialogClickListener listener) {
             this.listener = listener;
             return this;
         }
@@ -103,7 +100,7 @@ public class PermissionDialog extends AlertDialog implements View.OnClickListene
         }
     }
 
-    public interface onDialogClickListener {
+    public interface OnDialogClickListener {
         void onButtonClick();
 
         void onCancelClick();

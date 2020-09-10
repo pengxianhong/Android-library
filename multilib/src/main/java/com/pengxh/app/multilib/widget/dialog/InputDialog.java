@@ -18,7 +18,7 @@ public class InputDialog extends Dialog implements View.OnClickListener {
     private String positiveBtn;
     private String negativeBtn;
     private boolean cancelable;
-    private DialogClickListener listener;
+    private OnDialogClickListener listener;
     private EditText mInputMessage;
 
     private InputDialog(Builder builder) {
@@ -80,7 +80,7 @@ public class InputDialog extends Dialog implements View.OnClickListener {
         private String positiveBtn;
         private String negativeBtn;
         private boolean cancelable;
-        private DialogClickListener listener;
+        private OnDialogClickListener listener;
 
         public Builder setContext(Context context) {
             this.mContext = context;
@@ -107,7 +107,7 @@ public class InputDialog extends Dialog implements View.OnClickListener {
             return this;
         }
 
-        public Builder setOnDialogClickListener(DialogClickListener listener) {
+        public Builder setOnDialogClickListener(OnDialogClickListener listener) {
             this.listener = listener;
             return this;
         }
@@ -117,7 +117,7 @@ public class InputDialog extends Dialog implements View.OnClickListener {
         }
     }
 
-    public interface DialogClickListener {
+    public interface OnDialogClickListener {
         void onConfirmClick(Dialog dialog, String value);
 
         void onCancelClick();

@@ -43,34 +43,41 @@ public class PermissionAdapter extends RecyclerView.Adapter {
             boolean hasContain = Arrays.asList(DANGEROUS_PERMISSIONS).contains(permission);
             if (hasContain) {
                 //剔除同组权限
-                if (permission.equals("android.permission.WRITE_CONTACTS")
-                        || permission.equals("android.permission.GET_ACCOUNTS")
-                        || permission.equals("android.permission.READ_CONTACTS")) {
-                    permission = "android.permission.WRITE_CONTACTS";
-                } else if (permission.equals("android.permission.READ_CALL_LOG")
-                        || permission.equals("android.permission.READ_PHONE_STATE")
-                        || permission.equals("android.permission.CALL_PHONE")
-                        || permission.equals("android.permission.WRITE_CALL_LOG")
-                        || permission.equals("android.permission.USE_SIP")
-                        || permission.equals("android.permission.PROCESS_OUTGOING_CALLS")
-                        || permission.equals("com.android.voicemail.permission.ADD_VOICEMAIL")) {
-                    permission = "android.permission.READ_PHONE_STATE";
-                } else if (permission.equals("android.permission.READ_CALENDAR")
-                        || permission.equals("android.permission.WRITE_CALENDAR")) {
-                    permission = "android.permission.READ_CALENDAR";
-                } else if (permission.equals("android.permission.ACCESS_FINE_LOCATION")
-                        || permission.equals("android.permission.ACCESS_COARSE_LOCATION")) {
-                    permission = "android.permission.ACCESS_FINE_LOCATION";
-                } else if (permission.equals("android.permission.READ_EXTERNAL_STORAGE")
-                        || permission.equals("android.permission.WRITE_EXTERNAL_STORAGE")) {
-                    permission = "android.permission.READ_EXTERNAL_STORAGE";
-                } else if (permission.equals("android.permission.READ_SMS")
-                        || permission.equals("android.permission.RECEIVE_WAP_PUSH")
-                        || permission.equals("android.permission.RECEIVE_MMS")
-                        || permission.equals("android.permission.RECEIVE_SMS")
-                        || permission.equals("android.permission.SEND_SMS")
-                        || permission.equals("android.permission.READ_CELL_BROADCASTS")) {
-                    permission = "android.permission.READ_SMS";
+                switch (permission) {
+                    case "android.permission.WRITE_CONTACTS":
+                    case "android.permission.GET_ACCOUNTS":
+                    case "android.permission.READ_CONTACTS":
+                        permission = "android.permission.WRITE_CONTACTS";
+                        break;
+                    case "android.permission.READ_CALL_LOG":
+                    case "android.permission.READ_PHONE_STATE":
+                    case "android.permission.CALL_PHONE":
+                    case "android.permission.WRITE_CALL_LOG":
+                    case "android.permission.USE_SIP":
+                    case "android.permission.PROCESS_OUTGOING_CALLS":
+                    case "com.android.voicemail.permission.ADD_VOICEMAIL":
+                        permission = "android.permission.READ_PHONE_STATE";
+                        break;
+                    case "android.permission.READ_CALENDAR":
+                    case "android.permission.WRITE_CALENDAR":
+                        permission = "android.permission.READ_CALENDAR";
+                        break;
+                    case "android.permission.ACCESS_FINE_LOCATION":
+                    case "android.permission.ACCESS_COARSE_LOCATION":
+                        permission = "android.permission.ACCESS_FINE_LOCATION";
+                        break;
+                    case "android.permission.READ_EXTERNAL_STORAGE":
+                    case "android.permission.WRITE_EXTERNAL_STORAGE":
+                        permission = "android.permission.READ_EXTERNAL_STORAGE";
+                        break;
+                    case "android.permission.READ_SMS":
+                    case "android.permission.RECEIVE_WAP_PUSH":
+                    case "android.permission.RECEIVE_MMS":
+                    case "android.permission.RECEIVE_SMS":
+                    case "android.permission.SEND_SMS":
+                    case "android.permission.READ_CELL_BROADCASTS":
+                        permission = "android.permission.READ_SMS";
+                        break;
                 }
                 dangerousPermissions.add(permission);
             } else {
@@ -119,7 +126,7 @@ public class PermissionAdapter extends RecyclerView.Adapter {
             itemHolder.itemInfo.setText("允许应用访问摄像头进行拍照");
         }
         if (permission.equals("android.permission.BODY_SENSORS")) {
-            itemHolder.itemImage.setImageResource(R.drawable.per_sensors);
+            itemHolder.itemImage.setImageResource(R.drawable.per_sensor);
             itemHolder.itemTitle.setText("传感器");
             itemHolder.itemInfo.setText("允许应用获取传感器信息");
         }
@@ -136,7 +143,7 @@ public class PermissionAdapter extends RecyclerView.Adapter {
         if (permission.equals("android.permission.RECORD_AUDIO")) {
             itemHolder.itemImage.setImageResource(R.drawable.per_microphone);
             itemHolder.itemTitle.setText("录制声音");
-            itemHolder.itemInfo.setText("允许应用通过手机或耳机的麦克录制声音");
+            itemHolder.itemInfo.setText("允许应用通过手机麦克录制声音");
         }
         if (permission.equals("android.permission.READ_SMS")) {
             itemHolder.itemImage.setImageResource(R.drawable.per_sms);
@@ -145,7 +152,7 @@ public class PermissionAdapter extends RecyclerView.Adapter {
         }
     }
 
-    private class PermissionViewHolder extends RecyclerView.ViewHolder {
+    private static class PermissionViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView itemImage;
         private TextView itemTitle;

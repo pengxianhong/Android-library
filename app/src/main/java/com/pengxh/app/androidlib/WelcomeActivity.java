@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,7 +36,7 @@ public class WelcomeActivity extends AppCompatActivity implements EasyPermission
             if (EasyPermissions.hasPermissions(this, USER_PERMISSIONS)) {
                 startMainActivity();
             } else {
-                new PermissionDialog.Builder().setContext(this).setPermission(USER_PERMISSIONS).setOnDialogClickListener(new PermissionDialog.onDialogClickListener() {
+                new PermissionDialog.Builder().setContext(this).setPermissions(USER_PERMISSIONS).setOnDialogClickListener(new PermissionDialog.OnDialogClickListener() {
                     @Override
                     public void onButtonClick() {
                         EasyPermissions.requestPermissions(WelcomeActivity.this, "", PERMISSIONS_CODE, USER_PERMISSIONS);
