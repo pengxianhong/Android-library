@@ -3,12 +3,12 @@
 This is an Android dependent library
 ------------------------------------
 
-![框架图](https://github.com/pengxianhong/Android-library/blob/master/demoImage/androidlib.png)
+![框架图](https://github.com/AndroidCoderPeng/Android-library/blob/master/demoImage/androidlib.png)
 
 大致的框架的明细列了下，方便有幸看到我的库的朋友。这个库是我开发过程中遇到需求而该进来的的或者是我无意间发现的其他优秀的依赖库，所以，我就整合在一起，本意是方便自己，但是如果小伙伴们有幸找的我的库，并且有助于你的开发，请记得star，当然我不是在线求star，还有就是，如果有问题，你们可以提issue啊，我会尽力修改的。好了，废话说了这么多，接下来看下各个类所带来的效果吧，show
 time！
 
-### [![Jitpack](https://jitpack.io/v/pengxianhong/Android-library.svg)](https://jitpack.io/#pengxianhong/Android-library)
+### [![Jitpack](https://jitpack.io/v/AndroidCoderPeng/Android-library.svg)](https://jitpack.io/#AndroidCoderPeng/Android-library)
 
 
 # 引入
@@ -27,7 +27,7 @@ repositories {
 
 ```gradle
 dependencies {
-    implementation 'com.github.pengxianhong:Android-library:1.5.1'
+    implementation 'com.github.AndroidCoderPeng:Android-library:1.5.1'
 }
 ```
 
@@ -56,11 +56,11 @@ EasyToast.showToast("MainActivity", EasyToast.ERROR);
 
 效果图
 
-![EasyToast](https://github.com/pengxianhong/Android-library/blob/master/demoImage/toast_0.jpg)
-![EasyToast](https://github.com/pengxianhong/Android-library/blob/master/demoImage/toast_1.jpg)
+![EasyToast](https://github.com/AndroidCoderPeng/Android-library/blob/master/demoImage/toast_0.jpg)
+![EasyToast](https://github.com/AndroidCoderPeng/Android-library/blob/master/demoImage/toast_1.jpg)
 
-![EasyToast](https://github.com/pengxianhong/Android-library/blob/master/demoImage/toast_2.jpg)
-![EasyToast](https://github.com/pengxianhong/Android-library/blob/master/demoImage/toast_3.jpg)
+![EasyToast](https://github.com/AndroidCoderPeng/Android-library/blob/master/demoImage/toast_2.jpg)
+![EasyToast](https://github.com/AndroidCoderPeng/Android-library/blob/master/demoImage/toast_3.jpg)
 
 ### 2. CircleImageView
 
@@ -78,7 +78,7 @@ EasyToast.showToast("MainActivity", EasyToast.ERROR);
 
 效果图
 
-![CircleImageView](https://github.com/pengxianhong/Android-library/blob/master/demoImage/circleImage.jpg)
+![CircleImageView](https://github.com/AndroidCoderPeng/Android-library/blob/master/demoImage/circleImage.jpg)
 
 ### 3. SwipeMenuListView
 
@@ -147,8 +147,8 @@ swipeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 效果图
 
-![SwipeMenuListView](https://github.com/pengxianhong/Android-library/blob/master/demoImage/swipeListView_0.jpg)
-![SwipeMenuListView](https://github.com/pengxianhong/Android-library/blob/master/demoImage/swipeListView_1.jpg)
+![SwipeMenuListView](https://github.com/AndroidCoderPeng/Android-library/blob/master/demoImage/swipeListView_0.jpg)
+![SwipeMenuListView](https://github.com/AndroidCoderPeng/Android-library/blob/master/demoImage/swipeListView_1.jpg)
 
 ### 4. SpeedRecyclerView
 
@@ -191,19 +191,19 @@ class InputDialogClickListener implements InputDialog.onDialogClickListener {
 
 效果图
 
-![InputDialog](https://github.com/pengxianhong/Android-library/blob/master/demoImage/inputDialog.jpg)
+![InputDialog](https://github.com/AndroidCoderPeng/Android-library/blob/master/demoImage/inputDialog.jpg)
 
 ### 6. MultiSelectDialog
 
 效果图
 
-![MultiSelectDialog](https://github.com/pengxianhong/Android-library/blob/master/demoImage/multiSelectDialog.jpg)
+![MultiSelectDialog](https://github.com/AndroidCoderPeng/Android-library/blob/master/demoImage/multiSelectDialog.jpg)
 
 ### 7. PermissionDialog
 
 效果图
 
-![PermissionDialog](https://github.com/pengxianhong/Android-library/blob/master/demoImage/permissionDialog.jpg)
+![PermissionDialog](https://github.com/AndroidCoderPeng/Android-library/blob/master/demoImage/permissionDialog.jpg)
 
 ---
 
