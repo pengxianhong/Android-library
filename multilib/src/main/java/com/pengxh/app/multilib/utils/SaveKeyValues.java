@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.util.Log;
 
 public class SaveKeyValues {
-
     private static final String TAG = "SaveKeyValues";
 
     @SuppressLint({"StaticFieldLeak"})
@@ -86,7 +85,7 @@ public class SaveKeyValues {
     /**
      * 查询某个key是否存在
      */
-    public static Boolean containsKey(String key) {
+    public static boolean containsKey(String key) {
         sharedPreferences = context.getSharedPreferences(file, Context.MODE_PRIVATE);
         return sharedPreferences.contains(key);
     }

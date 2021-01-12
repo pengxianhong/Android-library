@@ -63,15 +63,15 @@ public class InputDialog extends Dialog implements View.OnClickListener {
         if (i == R.id.mDialogCancel) {
             if (listener != null) {
                 listener.onCancelClick();
-                this.dismiss();
             }
         } else if (i == R.id.mDialogConfirm) {
             if (listener != null) {
                 String inputValue = mInputMessage.getText().toString().trim();
                 Log.d(TAG, "onClick: " + inputValue);
-                listener.onConfirmClick(this, inputValue);
+                listener.onConfirmClick(inputValue);
             }
         }
+        this.dismiss();
     }
 
     public static class Builder {
@@ -118,7 +118,7 @@ public class InputDialog extends Dialog implements View.OnClickListener {
     }
 
     public interface OnDialogClickListener {
-        void onConfirmClick(Dialog dialog, String value);
+        void onConfirmClick(String value);
 
         void onCancelClick();
     }

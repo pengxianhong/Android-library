@@ -15,7 +15,6 @@ import java.util.regex.Pattern;
  */
 
 public class StringUtil {
-
     private static final String TAG = "StringUtil";
 
     /**
@@ -34,17 +33,23 @@ public class StringUtil {
      */
     public static boolean isNumber(String str) {
         if (!str.isEmpty()) {
-            String regExp = "^[-\\+]?[\\d]*$";
-            Pattern p = Pattern.compile(regExp);
-            Matcher m = p.matcher(str);
-            boolean isMatch = m.matches();
-            if (!isMatch) {
-                Log.w(TAG, "输入的是不是数字：" + str);
-            }
-            return isMatch;
+            Pattern pattern = Pattern.compile("^[-\\+]?[\\d]*$");
+            return pattern.matcher(str).matches();
         }
         return false;
     }
+
+    /**
+     * 判断是否为汉字
+     */
+    public static boolean isChinese(String str) {
+        if (!str.isEmpty()) {
+            Pattern pattern = Pattern.compile("[\\u4e00-\\u9fa5]+");
+            return pattern.matcher(str).matches();
+        }
+        return false;
+    }
+
 
     /**
      * 匹配电话号码
@@ -55,13 +60,8 @@ public class StringUtil {
             return false;
         } else {
             String regExp = "^[1](([3][0-9])|([4][5-9])|([5][0-3,5-9])|([6][5,6])|([7][0-8])|([8][0-9])|([9][1,8,9]))[0-9]{8}$";
-            Pattern p = Pattern.compile(regExp);
-            Matcher m = p.matcher(phoneNumber);
-            boolean isMatch = m.matches();
-            if (!isMatch) {
-                Log.e(TAG, "输入的手机号格式不对：" + phoneNumber);
-            }
-            return isMatch;
+            Pattern pattern = Pattern.compile(regExp);
+            return pattern.matcher(phoneNumber).matches();
         }
     }
 
@@ -74,13 +74,8 @@ public class StringUtil {
             return false;
         } else {
             String regExp = "^[a-z0-9]+([._\\\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$";
-            Pattern p = Pattern.compile(regExp);
-            Matcher m = p.matcher(email);
-            boolean isMatch = m.matches();
-            if (!isMatch) {
-                Log.e(TAG, "输入的邮箱地址格式不对：" + email);
-            }
-            return isMatch;
+            Pattern pattern = Pattern.compile(regExp);
+            return pattern.matcher(email).matches();
         }
     }
 

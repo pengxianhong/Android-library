@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFF"
+        android:background="@color/white"
         android:orientation="vertical">
 
         <TextView
@@ -20,7 +20,7 @@
             android:layout_weight="0.7"
             android:gravity="center"
             android:text="提示"
-            android:textColor="#000"
+            android:textColor="@color/black"
             android:textSize="18sp" />
 
         <EditText
@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_marginTop="10dp"
-            android:background="#CCC" />
+            android:background="@color/lightGray" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,14 +56,14 @@
                 android:background="@drawable/bg_button"
                 android:gravity="center"
                 android:text="@string/cancel"
-                android:textColor="#FF0000"
+                android:textColor="@color/red"
                 android:textSize="18sp" />
 
             <View
                 android:id="@+id/vv"
                 android:layout_width="1px"
                 android:layout_height="match_parent"
-                android:background="#CCC" />
+                android:background="@color/lightGray" />
 
             <TextView
                 android:id="@+id/mDialogConfirm"
@@ -73,7 +73,7 @@
                 android:background="@drawable/bg_button"
                 android:gravity="center"
                 android:text="@string/confirm"
-                android:textColor="#0094FF"
+                android:textColor="@color/sky"
                 android:textSize="18sp"
                 android:textStyle="bold" />
         </LinearLayout>

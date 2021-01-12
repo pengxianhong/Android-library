@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFFFFF"
+        android:background="@color/white"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="权限申请"
-                android:textColor="#000"
+                android:textColor="@color/black"
                 android:textSize="22sp" />
 
             <ImageView
@@ -42,7 +42,7 @@
             android:layout_marginBottom="5dp"
             android:gravity="center_horizontal"
             android:text="为了您能正常使用，需要以下权限："
-            android:textColor="#87000000"
+            android:textColor="@color/colorText"
             android:textSize="16sp" />
 
         <!-- 权限列表样式 -->
@@ -76,7 +76,7 @@
             android:background="@drawable/bg_permission_button"
             android:gravity="center"
             android:text="好的"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/white"
             android:textSize="16sp" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

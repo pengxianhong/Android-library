@@ -13,7 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFF"
+        android:background="@color/white"
         android:orientation="vertical">
 
         <TextView
@@ -23,14 +23,14 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="标题"
-            android:textColor="#000"
+            android:textColor="@color/black"
             android:textSize="18sp" />
 
         <View
             android:id="@+id/v"
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:background="#CCC" />
+            android:background="@color/lightGray" />
 
         <ListView
             android:id="@+id/mSelectListView"
@@ -38,7 +38,7 @@
             android:layout_height="0dp"
             android:layout_weight="7"
             android:cacheColorHint="#00000000"
-            android:divider="#CCC"
+            android:divider="@color/lightGray"
             android:dividerHeight="1px"
             android:focusable="false"
             android:focusableInTouchMode="false"
@@ -50,7 +50,7 @@
             android:id="@+id/vv"
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:background="#CCC" />
+            android:background="@color/lightGray" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -66,14 +66,14 @@
                 android:background="@drawable/bg_button"
                 android:gravity="center"
                 android:text="@string/cancel"
-                android:textColor="#FF0000"
+                android:textColor="@color/red"
                 android:textSize="18sp" />
 
             <View
                 android:id="@+id/vvv"
                 android:layout_width="1px"
                 android:layout_height="match_parent"
-                android:background="#CCC" />
+                android:background="@color/lightGray" />
 
             <Button
                 android:id="@+id/multiDialogConfirm"
@@ -83,7 +83,7 @@
                 android:background="@drawable/bg_button"
                 android:gravity="center"
                 android:text="@string/confirm"
-                android:textColor="#0094FF"
+                android:textColor="@color/sky"
                 android:textSize="18sp"
                 android:textStyle="bold" />
         </LinearLayout>

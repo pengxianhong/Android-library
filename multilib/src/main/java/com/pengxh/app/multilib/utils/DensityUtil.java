@@ -88,4 +88,12 @@ public class DensityUtil {
     public static int dp2px(Context context, float dpValue) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpValue, context.getResources().getDisplayMetrics());
     }
+
+    /**
+     * sp转换成px
+     */
+    public static int sp2px(Context context, float spValue) {
+        float fontScale = getScreenDensity(context);
+        return (int) (spValue * fontScale + 0.5f);
+    }
 }
