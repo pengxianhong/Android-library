@@ -3,7 +3,5 @@
 
     <corners android:radius="25dp" />
 
-    <!--微信绿-->
-    <solid android:color="#09BB07" />
-
+    <solid android:color="@color/weChatGreen" />
 </shape>

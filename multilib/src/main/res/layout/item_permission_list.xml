@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_toEndOf="@id/imageLayout"
-        android:textColor="#000000"
+        android:textColor="@color/black"
         android:textSize="16sp" />
 
     <!-- 右侧下方说明 -->
@@ -39,7 +39,7 @@
         android:layout_below="@id/itemTitle"
         android:layout_marginStart="5dp"
         android:layout_toEndOf="@id/imageLayout"
-        android:textColor="#54000000"
+        android:textColor="@color/colorText"
         android:textSize="14sp" />
 
 </RelativeLayout>

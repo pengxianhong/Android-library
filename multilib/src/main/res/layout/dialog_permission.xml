@@ -25,7 +25,7 @@
                 android:layout_centerInParent="true"
                 android:text="权限申请"
                 android:textColor="@color/black"
-                android:textSize="22sp" />
+                android:textSize="20sp" />
 
             <ImageView
                 android:id="@+id/permissionCancel"

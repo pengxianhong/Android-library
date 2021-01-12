@@ -7,4 +7,7 @@
     <color name="black">#000000</color>
     <color name="colorText">#666666</color>
     <color name="mainBackground">#F1F1F1</color>
+    <color name="cyan">#07B4A2</color>
+    <color name="weChatGreen">#09BB07</color><!--微信绿-->
+    <color name="orange">#FFBB00</color>
 </resources>

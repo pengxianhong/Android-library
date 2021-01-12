@@ -7,4 +7,4 @@
     android:background="@drawable/toast_error"
     android:gravity="center"
     android:text="TextView"
-    android:textColor="#FFFFFF" />
+    android:textColor="@color/white" />
